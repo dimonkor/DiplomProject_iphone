@@ -1,0 +1,7 @@
+HEADER_SEARCH_PATHS = ${PODS_HEADERS_SEARCH_PATHS} $(SDKROOT)/usr/include/libxml2
+PODS_PUBLIC_HEADERS_SEARCH_PATHS = "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/AFNetworking" "${PODS_ROOT}/Headers/ASIHTTPRequest" "${PODS_ROOT}/Headers/Reachability" "${PODS_ROOT}/Headers/RestKit" "${PODS_ROOT}/Headers/RestKit/RestKit/Network" "${PODS_ROOT}/Headers/RestKit/RestKit/CoreData" "${PODS_ROOT}/Headers/RestKit/RestKit" "${PODS_ROOT}/Headers/RestKit/RestKit/ObjectMapping" "${PODS_ROOT}/Headers/RestKit/RestKit/Support" "${PODS_ROOT}/Headers/SOCKit"
+PODS_BUILD_HEADERS_SEARCH_PATHS = "${PODS_ROOT}/BuildHeaders" "${PODS_ROOT}/BuildHeaders/AFNetworking" "${PODS_ROOT}/BuildHeaders/ASIHTTPRequest" "${PODS_ROOT}/BuildHeaders/Reachability" "${PODS_ROOT}/BuildHeaders/RestKit" "${PODS_ROOT}/BuildHeaders/RestKit/RestKit/Network" "${PODS_ROOT}/BuildHeaders/RestKit/RestKit/CoreData" "${PODS_ROOT}/BuildHeaders/RestKit/RestKit" "${PODS_ROOT}/BuildHeaders/RestKit/RestKit/ObjectMapping" "${PODS_ROOT}/BuildHeaders/RestKit/RestKit/Support" "${PODS_ROOT}/BuildHeaders/SOCKit"
+OTHER_LDFLAGS = -ObjC -lxml2.2 -lz.1 -framework CFNetwork -framework CoreData -framework CoreGraphics -framework MobileCoreServices -framework Security -framework SystemConfiguration
+PODS_HEADERS_SEARCH_PATHS = ${PODS_PUBLIC_HEADERS_SEARCH_PATHS}
+PODS_ROOT = ${SRCROOT}/Pods
+ALWAYS_SEARCH_USER_PATHS = YES
