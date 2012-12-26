@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DPMainViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate>
+@interface DPMainViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate, NSURLConnectionDataDelegate>
 
 @end

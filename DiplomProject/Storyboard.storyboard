@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="5cq-2y-g7E">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="za6-mE-Pps">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
     </dependencies>
@@ -37,8 +37,84 @@
             </objects>
             <point key="canvasLocation" x="162" y="97"/>
         </scene>
+        <!--Login Controller - Title-->
+        <scene sceneID="LcL-fA-txE">
+            <objects>
+                <viewController id="ixX-0a-LwL" customClass="DPLoginController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gxF-h3-fzb">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="R5X-pt-exY">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="246" id="ZBl-9J-K31"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Вход"/>
+                                    <segment title="Регистрация"/>
+                                </segments>
+                            </segmentedControl>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Имя пользователя" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="43B-bG-sPA">
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Пароль" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wP1-9A-FFX">
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="43B-bG-sPA" firstAttribute="top" secondItem="gxF-h3-fzb" secondAttribute="top" constant="105" id="0GB-Ho-BPG"/>
+                            <constraint firstItem="wP1-9A-FFX" firstAttribute="top" secondItem="43B-bG-sPA" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="9AX-oN-AlY"/>
+                            <constraint firstItem="R5X-pt-exY" firstAttribute="trailing" secondItem="43B-bG-sPA" secondAttribute="trailing" type="default" id="DIc-9S-H5L"/>
+                            <constraint firstItem="43B-bG-sPA" firstAttribute="leading" secondItem="R5X-pt-exY" secondAttribute="leading" type="default" id="EBE-VU-rHc"/>
+                            <constraint firstItem="R5X-pt-exY" firstAttribute="top" secondItem="gxF-h3-fzb" secondAttribute="top" constant="45" id="HFF-fZ-Rr7"/>
+                            <constraint firstItem="wP1-9A-FFX" firstAttribute="trailing" secondItem="43B-bG-sPA" secondAttribute="trailing" type="default" id="XDb-Dj-HZv"/>
+                            <constraint firstItem="wP1-9A-FFX" firstAttribute="leading" secondItem="43B-bG-sPA" secondAttribute="leading" type="default" id="dz4-B4-pgV"/>
+                            <constraint firstItem="43B-bG-sPA" firstAttribute="centerX" secondItem="gxF-h3-fzb" secondAttribute="centerX" type="default" id="wjZ-vG-Hnb"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="XME-Ax-dSz">
+                        <barButtonItem key="rightBarButtonItem" title="Готово" id="eQG-YY-YYA">
+                            <connections>
+                                <action selector="done:" destination="ixX-0a-LwL" id="QdI-Am-zLn"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="password" destination="wP1-9A-FFX" id="5Wt-em-15h"/>
+                        <outlet property="username" destination="43B-bG-sPA" id="6KF-F9-sGw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b7z-lc-egv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="369" y="793"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Ifg-Sq-y7V">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="za6-mE-Pps" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Hny-bg-fGp">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="ixX-0a-LwL" kind="relationship" relationship="rootViewController" id="RKd-x4-Pd3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fag-MW-CZi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-85" y="793"/>
+        </scene>
     </scenes>
     <classes>
+        <class className="DPLoginController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DPLoginController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="username" candidateClass="UITextField"/>
+            </relationships>
+        </class>
         <class className="DPMainViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DPMainViewController.h"/>
         </class>

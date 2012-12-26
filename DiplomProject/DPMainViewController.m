@@ -8,6 +8,7 @@
 
 #import "DPMainViewController.h"
 #import "RestKit.h"
+#import "DPUIUtils.h"
 
 #define CAMERA_TITLE @"Camera"
 #define LIBRARY_TITLE @"Library"
@@ -44,12 +45,12 @@
         UIImagePickerController *picker = [[UIImagePickerController alloc] init];
         picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
         picker.delegate = self;
-        picker.allowsEditing = YES;
+        picker.allowsEditing = NO;
         [self presentViewController:picker animated:YES completion:nil];
     } else if ([clickedButton isEqualToString:CAMERA_TITLE]) {
         UIImagePickerController *picker = [[UIImagePickerController alloc] init];
         picker.delegate = self;
-        picker.allowsEditing = YES;
+        picker.allowsEditing = NO;
         picker.sourceType = UIImagePickerControllerSourceTypeCamera;
         [self presentViewController:picker animated:YES completion:nil];
     }
@@ -58,30 +59,27 @@
 
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo {
-    NSLog(@"choisePhoto");
     [picker dismissViewControllerAnimated:YES completion:nil];
-
 
     NSString *url = @"http://192.168.0.219/diplom/save_image.php";
 
 
-    [RKObjectManager managerWithBaseURL:[[NSURL alloc] initWithString:url]];
-    RKParams *params;
+    NSURL *baseURL = [[NSURL alloc] initWithString:url];
+    NSData *imageData = UIImageJPEGRepresentation(image, 1);
+    AFHTTPClient *client = [AFHTTPClient clientWithBaseURL:baseURL];
+    NSURLRequest *request = [client multipartFormRequestWithMethod:@"POST" path:nil parameters:nil constructingBodyWithBlock:^(id <AFMultipartFormData> formData){
+        [formData appendPartWithFileData:imageData name:@"image" fileName:@"imageName" mimeType:@"image/jpeg"];
+    }];
 
-//    ASIFormDataRequest *request = [[ASIFormDataRequest alloc] initWithURL:[[NSURL alloc] initWithString:url]];
-//    [request setData:UIImageJPEGRepresentation(image, 0.5) forKey:@"userfile"];
-//    [request startSynchronous];
+
+    showHUD();
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue currentQueue] completionHandler:^(NSURLResponse *response , NSData *data,  NSError *error){
+        if (error){
+
+        }
+        hideHUD();
+    }];
 
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
-{
-    self.reciveData = data;
-}
-
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection
-{
-    NSString *result = [[NSString alloc] initWithData:self.reciveData encoding:NSUTF8StringEncoding];
-    NSLog(@"%@", result);
-}
 @end

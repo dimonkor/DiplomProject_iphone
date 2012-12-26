@@ -19,6 +19,11 @@
 		A2E1F9F71671262B003AF91B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2E1F9F61671262B003AF91B /* Default-568h@2x.png */; };
 		A2E1F9FE16712644003AF91B /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2E1F9FD16712644003AF91B /* Storyboard.storyboard */; };
 		A2E1FA3A16712D03003AF91B /* DPMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2E1FA3916712D03003AF91B /* DPMainViewController.m */; };
+		A2FDC9F316877E0700005509 /* DPLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2FDC9F216877E0700005509 /* DPLoginController.m */; };
+		C55828049756BF83BBF0AC89 /* DPAbstractResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = C55825D48E2CDA925A72227C /* DPAbstractResponse.m */; };
+		C5582807006FD1ED234FACCB /* DPUIUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = C5582A3CCD455F0FFB09990A /* DPUIUtils.m */; };
+		C55829F87747505AA1239558 /* DPConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = C5582133AD6613612238F64F /* DPConstants.m */; };
+		C5582FB095AFBE0186EF1696 /* DPAbstractService.m in Sources */ = {isa = PBXBuildFile; fileRef = C55822929EF3BF34D9B07ECC /* DPAbstractService.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +43,16 @@
 		A2E1F9FD16712644003AF91B /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		A2E1FA3816712D03003AF91B /* DPMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPMainViewController.h; sourceTree = "<group>"; };
 		A2E1FA3916712D03003AF91B /* DPMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPMainViewController.m; sourceTree = "<group>"; };
+		A2FDC9F116877E0700005509 /* DPLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPLoginController.h; sourceTree = "<group>"; };
+		A2FDC9F216877E0700005509 /* DPLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPLoginController.m; sourceTree = "<group>"; };
+		C5582133AD6613612238F64F /* DPConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPConstants.m; sourceTree = "<group>"; };
+		C558217A9E300F534BA437CB /* DPConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPConstants.h; sourceTree = "<group>"; };
+		C55822929EF3BF34D9B07ECC /* DPAbstractService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPAbstractService.m; sourceTree = "<group>"; };
+		C55825D48E2CDA925A72227C /* DPAbstractResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPAbstractResponse.m; sourceTree = "<group>"; };
+		C558272D2F4C8402FE6868D5 /* DPAbstractService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPAbstractService.h; sourceTree = "<group>"; };
+		C55828AF0545673C32043124 /* DPAbstractResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPAbstractResponse.h; sourceTree = "<group>"; };
+		C55828DF19ABCE8AAFB0F5FF /* DPUIUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPUIUtils.h; sourceTree = "<group>"; };
+		C5582A3CCD455F0FFB09990A /* DPUIUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPUIUtils.m; sourceTree = "<group>"; };
 		E4FD452BDBDE47F68CEC64C0 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		F605C9DFA37A47DBA0EABE49 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -94,6 +109,9 @@
 				A2E1F9F01671262B003AF91B /* DPAppDelegate.m */,
 				A2E1FA3716712CC2003AF91B /* Controllers */,
 				A2E1F9E71671262B003AF91B /* Supporting Files */,
+				C5582A8006889632E5AC3E9B /* Utils */,
+				C55822925A8D9FAFA0DB86D7 /* Services */,
+				C5582E2062FA0DB7B323D8D5 /* Responses */,
 			);
 			path = DiplomProject;
 			sourceTree = "<group>";
@@ -117,8 +135,39 @@
 			children = (
 				A2E1FA3816712D03003AF91B /* DPMainViewController.h */,
 				A2E1FA3916712D03003AF91B /* DPMainViewController.m */,
+				A2FDC9F116877E0700005509 /* DPLoginController.h */,
+				A2FDC9F216877E0700005509 /* DPLoginController.m */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		C55822925A8D9FAFA0DB86D7 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				C55822929EF3BF34D9B07ECC /* DPAbstractService.m */,
+				C558272D2F4C8402FE6868D5 /* DPAbstractService.h */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		C5582A8006889632E5AC3E9B /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				C5582A3CCD455F0FFB09990A /* DPUIUtils.m */,
+				C55828DF19ABCE8AAFB0F5FF /* DPUIUtils.h */,
+				C5582133AD6613612238F64F /* DPConstants.m */,
+				C558217A9E300F534BA437CB /* DPConstants.h */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		C5582E2062FA0DB7B323D8D5 /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				C55828AF0545673C32043124 /* DPAbstractResponse.h */,
+				C55825D48E2CDA925A72227C /* DPAbstractResponse.m */,
+			);
+			path = Responses;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,6 +258,11 @@
 				A2E1F9ED1671262B003AF91B /* main.m in Sources */,
 				A2E1F9F11671262B003AF91B /* DPAppDelegate.m in Sources */,
 				A2E1FA3A16712D03003AF91B /* DPMainViewController.m in Sources */,
+				C5582807006FD1ED234FACCB /* DPUIUtils.m in Sources */,
+				A2FDC9F316877E0700005509 /* DPLoginController.m in Sources */,
+				C5582FB095AFBE0186EF1696 /* DPAbstractService.m in Sources */,
+				C55828049756BF83BBF0AC89 /* DPAbstractResponse.m in Sources */,
+				C55829F87747505AA1239558 /* DPConstants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
