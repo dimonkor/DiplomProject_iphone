@@ -36,7 +36,6 @@
     NSURL *baseURL = [[NSURL alloc] initWithString:(NSString *) API_PATH];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:baseURL];
     [request setHTTPMethod:@"POST"];
-    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"content-type"];
     [request setHTTPBody:[[DPUIUtils stringWithURLEncodedEntries:params] dataUsingEncoding:NSUTF8StringEncoding]] ;
 
     RKResponseDescriptor *responseDescriptor =

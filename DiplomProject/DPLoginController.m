@@ -7,18 +7,16 @@
 //
 
 #import "DPLoginController.h"
-#import "AFHTTPClient.h"
-#import "DPUIUtils.h"
 #import "DPAbstractResponse.h"
-#import "RestKit.h"
 #import "DPAbstractService.h"
-#import "DPAbstractService.h"
+#import "DPLoginService.h"
+#import "DPLoginResponse.h"
 
 @interface DPLoginController ()
 
 @property(strong, nonatomic) IBOutlet UITextField *username;
 @property(strong, nonatomic) IBOutlet UITextField *password;
-@property(nonatomic, strong) DPAbstractService *service;
+@property(nonatomic, strong) DPLoginService *service;
 
 
 @end
@@ -27,12 +25,13 @@
 
 - (IBAction)done:(id)sender {
     
-    self.service = [[DPAbstractService alloc] init];
+    self.service = [[DPLoginService alloc] init];
     self.service.completionBlock = ^(DPAbstractResponse *response){
-        NSLog(@"complete");
+        DPLoginResponse *castedResponse = (DPLoginResponse *) response;
+//        [self performSegueWithIdentifier:@"gotoMainView" sender:self];
     };
 
-    [self.service sendRequest:@{@"qwe":@"dfsdf"} responseClass:[DPAbstractResponse class]];
+    [self.service sendUser:self.username.text password:self.password.text];
 
 
 }
