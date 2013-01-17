@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class DPSendImageService;
+
 @interface DPMainViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate, NSURLConnectionDataDelegate>
 
 @end

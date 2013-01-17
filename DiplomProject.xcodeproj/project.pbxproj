@@ -21,6 +21,7 @@
 		A2E1FA3A16712D03003AF91B /* DPMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2E1FA3916712D03003AF91B /* DPMainViewController.m */; };
 		A2FDC9F316877E0700005509 /* DPLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2FDC9F216877E0700005509 /* DPLoginController.m */; };
 		C558207BF65725E837B5C477 /* DPLoginResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = C5582C23CEE43CE0FF026A82 /* DPLoginResponse.m */; };
+		C5582290B3EEDD84BA99B1F5 /* DPSendImageService.m in Sources */ = {isa = PBXBuildFile; fileRef = C55824A077CDCFF241104127 /* DPSendImageService.m */; };
 		C5582360432D68FB28E3BCC1 /* DPLoginService.m in Sources */ = {isa = PBXBuildFile; fileRef = C5582638B4ECABDF9C66432D /* DPLoginService.m */; };
 		C55828049756BF83BBF0AC89 /* DPAbstractResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = C55825D48E2CDA925A72227C /* DPAbstractResponse.m */; };
 		C5582807006FD1ED234FACCB /* DPUIUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = C5582A3CCD455F0FFB09990A /* DPUIUtils.m */; };
@@ -51,6 +52,7 @@
 		C558217A9E300F534BA437CB /* DPConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPConstants.h; sourceTree = "<group>"; };
 		C55822929EF3BF34D9B07ECC /* DPAbstractService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPAbstractService.m; sourceTree = "<group>"; };
 		C5582336220C566F790ADDA6 /* DPLoginResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPLoginResponse.h; sourceTree = "<group>"; };
+		C55824A077CDCFF241104127 /* DPSendImageService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPSendImageService.m; sourceTree = "<group>"; };
 		C55824F09FA94831D087A001 /* DPLoginService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPLoginService.h; sourceTree = "<group>"; };
 		C55825D48E2CDA925A72227C /* DPAbstractResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPAbstractResponse.m; sourceTree = "<group>"; };
 		C5582638B4ECABDF9C66432D /* DPLoginService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPLoginService.m; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 		C55828DF19ABCE8AAFB0F5FF /* DPUIUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPUIUtils.h; sourceTree = "<group>"; };
 		C5582A3CCD455F0FFB09990A /* DPUIUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPUIUtils.m; sourceTree = "<group>"; };
 		C5582C23CEE43CE0FF026A82 /* DPLoginResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPLoginResponse.m; sourceTree = "<group>"; };
+		C5582D04A3C78A95B0A246C9 /* DPSendImageService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPSendImageService.h; sourceTree = "<group>"; };
 		E4FD452BDBDE47F68CEC64C0 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		F605C9DFA37A47DBA0EABE49 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -154,6 +157,8 @@
 				C558272D2F4C8402FE6868D5 /* DPAbstractService.h */,
 				C5582638B4ECABDF9C66432D /* DPLoginService.m */,
 				C55824F09FA94831D087A001 /* DPLoginService.h */,
+				C55824A077CDCFF241104127 /* DPSendImageService.m */,
+				C5582D04A3C78A95B0A246C9 /* DPSendImageService.h */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -275,6 +280,7 @@
 				C55829F87747505AA1239558 /* DPConstants.m in Sources */,
 				C5582360432D68FB28E3BCC1 /* DPLoginService.m in Sources */,
 				C558207BF65725E837B5C477 /* DPLoginResponse.m in Sources */,
+				C5582290B3EEDD84BA99B1F5 /* DPSendImageService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

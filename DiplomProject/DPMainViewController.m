@@ -9,12 +9,15 @@
 #import "DPMainViewController.h"
 #import "RestKit.h"
 #import "DPUIUtils.h"
+#import "DPSendImageService.h"
+#import "DPAbstractResponse.h"
 
 #define CAMERA_TITLE @"Camera"
 #define LIBRARY_TITLE @"Library"
 
 @interface DPMainViewController ()
 @property(nonatomic, strong) NSData *reciveData;
+@property(nonatomic, strong) DPSendImageService *service;
 
 
 @end
@@ -60,25 +63,30 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo {
     [picker dismissViewControllerAnimated:YES completion:nil];
+    
+    self.service = [[DPSendImageService alloc] init];
+    self.service.completionBlock = ^(DPAbstractResponse *response){
+        NSLog(@"dfs");
+    };
+    [self.service sendImage:image];
 
-    NSString *url = @"http://192.168.0.219/diplom/save_image.php";
-
-
-    NSURL *baseURL = [[NSURL alloc] initWithString:url];
-    NSData *imageData = UIImageJPEGRepresentation(image, 1);
-    AFHTTPClient *client = [AFHTTPClient clientWithBaseURL:baseURL];
-    NSURLRequest *request = [client multipartFormRequestWithMethod:@"POST" path:nil parameters:nil constructingBodyWithBlock:^(id <AFMultipartFormData> formData){
-        [formData appendPartWithFileData:imageData name:@"image" fileName:@"imageName" mimeType:@"image/jpeg"];
-    }];
-
-
-    showHUD();
-    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue currentQueue] completionHandler:^(NSURLResponse *response , NSData *data,  NSError *error){
-        if (error){
-
-        }
-        hideHUD();
-    }];
+//    NSString *url = @"http://192.168.0.219/diplom/save_image.php";
+//
+//
+//    NSURL *baseURL = [[NSURL alloc] initWithString:url];
+//    AFHTTPClient *client = [AFHTTPClient clientWithBaseURL:baseURL];
+//    NSURLRequest *request = [client multipartFormRequestWithMethod:@"POST" path:nil parameters:nil constructingBodyWithBlock:^(id <AFMultipartFormData> formData){
+//        [formData appendPartWithFileData:imageData name:@"image" fileName:@"imageName" mimeType:@"image/jpeg"];
+//    }];
+//
+//
+//    showHUD();
+//    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue currentQueue] completionHandler:^(NSURLResponse *response , NSData *data,  NSError *error){
+//        if (error){
+//
+//        }
+//        hideHUD();
+//    }];
 
 }
 

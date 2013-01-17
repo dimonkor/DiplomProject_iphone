@@ -85,7 +85,11 @@ RKMappingResult, RKRequestDescriptor, RKResponseDescriptor;
  
  Once a path pattern has been registered via the routing system, the manager can automatically build full request URL's when given nothing but the object to be sent.
  
- The second use case of path patterns is in the matching of path into a dictionary of attributes. In this case, the path pattern is evaluatd against a string and used to construct an `NSDictionary` object containing the matched key paths, optionally including the values of a query string. This functionality is provided via the `RKPathMatcher` class and is discussed in detail in the accompanying documentation.  
+ The second use case of path patterns is in the matching of path into a dictionary of attributes. In this case, the path pattern is evaluatd against a string and used to construct an `NSDictionary` object containing the matched key paths, optionally including the values of a query string. This functionality is provided via the `RKPathMatcher` class and is discussed in detail in the accompanying documentation.
+ 
+ ### Escaping Path Patterns
+ 
+ Note that path patterns will by default interpret anything prefixed with a period that follows a dynamic path segment as a key path. This can cause an issue if you have a dynamic path segment that is followed by a file extension. For example, a path pattern of '/categories/:categoryID.json' would be erroneously interpretted as containing a dynamic path segment whose value is interpolated from the 'categoryID.json' key path. This key path evaluation behavior can be suppressed by escaping the period preceding the non-dynamic part of the pattern with two leading slashes, as in '/categories/:categoryID\\.json'.
  
  ## Request and Response Descriptors
  
@@ -142,6 +146,15 @@ RKMappingResult, RKRequestDescriptor, RKResponseDescriptor;
  
  In the above example, request and response mapping configurations were described for a simple data model and then used to perform a basic POST operation and map the results. An arbitrary number of request and response descriptors may be added to the manager to accommodate your application's needs.
  
+ ## Multi-object Parameterization
+
+ The object manager provides support for the parameterization of multiple objects provided as an array. The `requestWithObject:method:path:parameters:` and `multipartFormRequestWithObject:method:path:parameters:constructingBodyWithBlock:` methods can parameterize an array of objects for you provided that the `RKRequestDescriptor` objects are configured in a compatible way. The rules for multi-object parameterization are simple:
+
+ 1. If a `nil` root key path is used, then it must be used for all objects in the array. This is because the objects will be parameterized into a dictionary and then each dictionary will be added to an array. This array is then serialized for transport, so objects parameterized to a non-nil key path cannot be merged with the array.
+ 1. If a `nil` root key path is used to parameterize the array of objects, then you cannot provide additional parameters to be merged with the request. This is again because you cannot merge a dictionary with an array.
+
+ If non-nil key paths are used, then each object will be set in the parameters dictionary at the specified key-path. If more than one object uses the same root key path, then the parameters will be combined into an array for transport.
+
  ## MIME Types
  
  MIME Types serve an important function to the object manager. They are used to identify how content is to be serialized when constructing request bodies and also used to set the 'Accept' header for content negotiation. RestKit aspires to be content type agnostic by leveraging the pluggable `RKMIMESerialization` class to handle content serialization and deserialization.
@@ -227,7 +240,7 @@ RKMappingResult, RKRequestDescriptor, RKResponseDescriptor;
  
  @return The shared manager instance.
  */
-+ (RKObjectManager *)sharedManager;
++ (instancetype)sharedManager;
 
 /**
  Set the shared instance of the object manager
@@ -248,7 +261,7 @@ RKMappingResult, RKRequestDescriptor, RKResponseDescriptor;
  @param baseURL The base URL with which to initialize the `AFHTTPClient` object
  @return A new `RKObjectManager` initialized with an `AFHTTPClient` that was initialized with the given baseURL.
  */
-+ (id)managerWithBaseURL:(NSURL *)baseURL;
++ (instancetype)managerWithBaseURL:(NSURL *)baseURL;
 
 /**
  Initializes the receiver with the given AFNetworking HTTP client object, adopting the network configuration from the client.
@@ -609,7 +622,7 @@ RKMappingResult, RKRequestDescriptor, RKResponseDescriptor;
  
  The type of object request operation created is determined by invoking `appropriateObjectRequestOperationWithObject:method:path:parameters:`.
  
- @param object The object with which to construct the object request operation. Cannot be nil.
+ @param object The object with which to construct the object request operation. If `nil`, then the path must be provided.
  @param path The path to be appended to the HTTP client's base URL and used as the request URL. If nil, the request URL will be obtained by consulting the router for a route registered for the given object's class and the `RKRequestMethodGET` request method.
  @param parameters The parameters to be encoded and appended as the query string for the request URL.
  @param success A block object to be executed when the object request operation finishes successfully. This block has no return value and takes two arguments: the created object request operation and the `RKMappingResult` object created by object mapping the response data of request.
@@ -627,7 +640,7 @@ RKMappingResult, RKRequestDescriptor, RKResponseDescriptor;
 /**
  Creates an `RKObjectRequestOperation` with a `POST` request for the given object, and enqueues it to the manager's operation queue.
  
- @param object The object with which to construct the object request operation. Cannot be nil.
+ @param object The object with which to construct the object request operation. If `nil`, then the path must be provided.
  @param path The path to be appended to the HTTP client's base URL and used as the request URL. If nil, the request URL will be obtained by consulting the router for a route registered for the given object's class and the `RKRequestMethodPOST` method.
  @param parameters The parameters to be reverse merged with the parameterization of the given object and set as the request body.
  @param success A block object to be executed when the object request operation finishes successfully. This block has no return value and takes two arguments: the created object request operation and the `RKMappingResult` object created by object mapping the response data of request.
@@ -645,7 +658,7 @@ RKMappingResult, RKRequestDescriptor, RKResponseDescriptor;
 /**
  Creates an `RKObjectRequestOperation` with a `PUT` request for the given object, and enqueues it to the manager's operation queue.
  
- @param object The object with which to construct the object request operation. Cannot be nil.
+ @param object The object with which to construct the object request operation. If `nil`, then the path must be provided.
  @param path The path to be appended to the HTTP client's base URL and used as the request URL. If nil, the request URL will be obtained by consulting the router for a route registered for the given object's class and the `RKRequestMethodPUT` method.
  @param parameters The parameters to be reverse merged with the parameterization of the given object and set as the request body.
  @param success A block object to be executed when the object request operation finishes successfully. This block has no return value and takes two arguments: the created object request operation and the `RKMappingResult` object created by object mapping the response data of request.
@@ -663,7 +676,7 @@ RKMappingResult, RKRequestDescriptor, RKResponseDescriptor;
 /**
  Creates an `RKObjectRequestOperation` with a `PATCH` request for the given object, and enqueues it to the manager's operation queue.
  
- @param object The object with which to construct the object request operation. Cannot be nil.
+ @param object The object with which to construct the object request operation. If `nil`, then the path must be provided.
  @param path The path to be appended to the HTTP client's base URL and used as the request URL. If nil, the request URL will be obtained by consulting the router for a route registered for the given object's class and the `RKRequestMethodPATCH` method.
  @param parameters The parameters to be reverse merged with the parameterization of the given object and set as the request body.
  @param success A block object to be executed when the object request operation finishes successfully. This block has no return value and takes two arguments: the created object request operation and the `RKMappingResult` object created by object mapping the response data of request.
@@ -683,7 +696,7 @@ RKMappingResult, RKRequestDescriptor, RKResponseDescriptor;
  
  The type of object request operation created is determined by invoking `appropriateObjectRequestOperationWithObject:method:path:parameters:`.
  
- @param object The object with which to construct the object request operation. Cannot be nil.
+ @param object The object with which to construct the object request operation. If `nil`, then the path must be provided.
  @param path The path to be appended to the HTTP client's base URL and used as the request URL. If nil, the request URL will be obtained by consulting the router for a route registered for the given object's class and the `RKRequestMethodDELETE` request method.
  @param parameters The parameters to be encoded and appended as the query string for the request URL.
  @param success A block object to be executed when the object request operation finishes successfully. This block has no return value and takes two arguments: the created object request operation and the `RKMappingResult` object created by object mapping the response data of request.

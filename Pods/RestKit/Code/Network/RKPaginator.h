@@ -36,9 +36,9 @@
  
     RKObjectMapping *paginationMapping = [RKObjectMapping mappingForClass:[RKPaginator class]];
     [paginationMapping addAttributeMappingsFromDictionary:@{
-        @"pagination.per_page",        @"perPage",
-        @"pagination.total_pages",     @"pageCount",
-        @"pagination.total_objects",   @"objectCount",
+        @"pagination.per_page":        @"perPage",
+        @"pagination.total_pages":     @"pageCount",
+        @"pagination.total_objects":   @"objectCount",
     }];
  
  ## iOS 5 Compatibility Caveats
@@ -47,6 +47,10 @@
  
  */
 @interface RKPaginator : NSObject
+
+///-------------------------------------
+/// @name Initializing Paginator Objects
+///-------------------------------------
 
 /**
  Initializes a RKPaginator object with the a provided patternURL and mappingProvider.
@@ -59,6 +63,10 @@
 - (id)initWithRequest:(NSURLRequest *)request
     paginationMapping:(RKObjectMapping *)paginationMapping
   responseDescriptors:(NSArray *)responseDescriptors;
+
+///-----------------------------
+/// @name Configuring Networking
+///-----------------------------
 
 /**
  A URL with a path pattern for building a complete URL from
@@ -88,6 +96,13 @@
  An optional operation queue on which object request operations constructed by the paginator are to be enqueued for processing.
  */
 @property (nonatomic, strong) NSOperationQueue *operationQueue;
+
+/**
+ Sets the `RKHTTPRequestOperation` subclass to be used when constructing HTTP request operations for requests dispatched by the paginator.
+ 
+ **Default**: `[RKHTTPRequestOperation class]`
+ */
+- (void)setHTTPOperationClass:(Class)operationClass;
 
 ///-----------------------------------
 /// @name Setting the Completion Block

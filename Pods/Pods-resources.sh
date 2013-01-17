@@ -21,3 +21,4 @@ install_resource()
       ;;
   esac
 }
+install_resource 'Three20Lite/src/Three20.bundle'
