@@ -8,8 +8,6 @@
 #import "DPConstants.h"
 
 
-@implementation DPConstants {
-
-}
+@implementation DPConstants
 
 @end

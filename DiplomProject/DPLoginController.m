@@ -10,13 +10,20 @@
 #import "DPAbstractResponse.h"
 #import "DPAbstractService.h"
 #import "DPLoginService.h"
-#import "DPLoginResponse.h"
+#import "DPUserInfoResponse.h"
+#import "DPApplication.h"
+#import "DPUIUtils.h"
+#import "DPRegisterService.h"
+#import "DPUserInfo.h"
+#import "DPConstants.h"
 
 @interface DPLoginController ()
 
 @property(strong, nonatomic) IBOutlet UITextField *username;
 @property(strong, nonatomic) IBOutlet UITextField *password;
-@property(nonatomic, strong) DPLoginService *service;
+@property(nonatomic, strong) DPLoginService *loginService;
+@property(nonatomic, strong) DPRegisterService *registerService;
+@property (strong, nonatomic) IBOutlet UISegmentedControl *segmentController;
 
 
 @end
@@ -24,14 +31,34 @@
 @implementation DPLoginController
 
 - (IBAction)done:(id)sender {
-    
-    self.service = [[DPLoginService alloc] init];
-    self.service.completionBlock = ^(DPAbstractResponse *response){
-        DPLoginResponse *castedResponse = (DPLoginResponse *) response;
-//        [self performSegueWithIdentifier:@"gotoMainView" sender:self];
+
+    __weak DPLoginController *weakSelf = self;
+    void (^completionBlock)(DPAbstractResponse *) = ^(DPAbstractResponse *response) {
+        DPUserInfoResponse *castedResponse = (DPUserInfoResponse *) response;
+        [[DPApplication instance] loginUser:weakSelf.username.text password:weakSelf.password.text];
+        [DPUserInfo setUsername:castedResponse.username avatarImageName:castedResponse.avatar_url];
+        hideHUD();
+        [DPUIUtils appWindow].rootViewController = [self.storyboard instantiateViewControllerWithIdentifier:mainTabBarControllerID];
+        if (self.segmentController.selectedSegmentIndex == 1){
+            [DPUIUtils showMessage:@"Пожалуйста заполните информацию о себе" withTitle:@"Инфо"];
+        }
+
     };
 
-    [self.service sendUser:self.username.text password:self.password.text];
+    if (self.segmentController.selectedSegmentIndex == 0){
+        self.loginService = [[DPLoginService alloc] init];
+        self.loginService.completionBlock = completionBlock;
+        showHUD();
+        [self.loginService sendUser:self.username.text password:self.password.text];
+    }
+    else{
+        self.registerService = [[DPRegisterService alloc] init];
+        self.registerService.completionBlock = completionBlock;
+        showHUD();
+        [self.registerService sendUser:self.username.text password:self.password.text];
+    }
+
+
 
 
 }

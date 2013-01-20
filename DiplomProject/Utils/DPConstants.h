@@ -7,7 +7,9 @@
 
 #import <Foundation/Foundation.h>
 
-static const NSString* API_PATH = @"http://192.168.0.219/diplom/api/index.php";
+static const NSString *API_PATH = @"http://192.168.0.219/diplom/api";
+static  NSString *mainTabBarControllerID = @"mainTabBarController";
+static  NSString *loginControllerID = @"loginController";
 
 @interface DPConstants : NSObject
 @end

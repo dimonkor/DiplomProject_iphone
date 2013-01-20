@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DPViewControllerWithActionSheet.h"
 
 @class DPSendImageService;
 
-@interface DPMainViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate, NSURLConnectionDataDelegate>
+@interface DPMainViewController : DPViewControllerWithActionSheet
 
 @end

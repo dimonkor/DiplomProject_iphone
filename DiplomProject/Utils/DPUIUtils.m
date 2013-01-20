@@ -31,12 +31,12 @@ void hideHUD(){
 }
 
 + (void)connectionError {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"No connection to the server" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Ошибка" message:@"Нет соединения с сервером" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alertView show];
 }
 
 + (void)showError:(NSString *)error {
-    [self showMessage:error withTitle:@"Error"];
+    [self showMessage:error withTitle:@"Ошибка"];
 }
 
 + (void)showMessage:(NSString *)text withTitle:(NSString *)title {

@@ -41,6 +41,9 @@
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:[[DPUIUtils stringWithURLEncodedEntries:params] dataUsingEncoding:NSUTF8StringEncoding]];
 
+    AFHTTPClient *client = [AFHTTPClient clientWithBaseURL:baseURL];
+    request = [client requestWithMethod:@"POST" path:@"" parameters:params];
+
     RKResponseDescriptor *responseDescriptor =
             [RKResponseDescriptor responseDescriptorWithMapping:[responseClass mapping]
                                                     pathPattern:nil keyPath:@"" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
@@ -60,7 +63,6 @@
         self.connectionErrorBlock();
     }];
     [objectRequestOperation start];
-//    [self sendRequest:params responseClass:responseClass withFile:nil fileName:nil mimeType:nil];
 }
 
 - (void)sendRequest:(NSDictionary *)params
@@ -74,9 +76,6 @@
     RKObjectManager *manager = [RKObjectManager managerWithBaseURL:baseURL];
     NSMutableURLRequest *request;
     if (file && fileName && mimeType) {
-//        [manager multipartFormRequestWithObject:[DPAbstractResponse new] method:RKRequestMethodPOST path:@"" parameters:params constructingBodyWithBlock:^(id <AFMultipartFormData> formData) {
-//            [formData appendPartWithFileData:file name:@"image" fileName:@"imageName" mimeType:@"image/jpeg"];
-//        }];
         request = [client multipartFormRequestWithMethod:@"POST" path:@"" parameters:params constructingBodyWithBlock:^(id <AFMultipartFormData> formData) {
             [formData appendPartWithFileData:file name:@"image" fileName:@"imageName" mimeType:@"image/jpeg"];
         }];
@@ -85,35 +84,33 @@
         request = [client requestWithMethod:@"POST" path:nil parameters:params];
     }
 
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue currentQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        if (connectionError) {
+            self.connectionErrorBlock();
+        } else {
+            NSString *MIMEType = @"application/json";
+            NSError *error;
+            id parsedData = [RKMIMETypeSerialization objectFromData:data MIMEType:MIMEType error:&error];
+            if (parsedData == nil && error) {
+                NSLog(@"parse error for string %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+                self.connectionErrorBlock();
+            }
 
-    RKResponseDescriptor *responseDescriptor =
-            [RKResponseDescriptor responseDescriptorWithMapping:[responseClass mapping]
-                                                    pathPattern:nil keyPath:@"" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+            NSDictionary *mappingsDictionary = @{@"" : [responseClass mapping]};
+            RKMapperOperation *mapper = [[RKMapperOperation alloc] initWithRepresentation:parsedData mappingsDictionary:mappingsDictionary];
+            NSError *mappingError = nil;
+            BOOL isMapped = [mapper execute:&mappingError];
+            if (isMapped && !mappingError) {
+                DPAbstractResponse *abstractResponse = mapper.mappingResult.firstObject;
+                if (abstractResponse.hasError) {
+                    self.errorBlock(abstractResponse);
+                } else {
+                    self.completionBlock(abstractResponse);
+                }
+            }
+        }
 
-    self.objectRequestOperation = [[RKObjectRequestOperation alloc] initWithRequest:request responseDescriptors:@[responseDescriptor]];
-    [self.objectRequestOperation setCompletionBlockWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        NSLog(@"Recive response: %@", [[NSString alloc] initWithData:operation.HTTPRequestOperation.responseData encoding:NSUTF8StringEncoding]);
-        DPAbstractResponse *response = mappingResult.firstObject;
-        if (!response || response.hasError) {
-            self.errorBlock(response);
-        }
-        else {
-            self.completionBlock(response);
-        }
-    }                                                  failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        NSLog(@"Operation failed with error: %@", error);
-        self.connectionErrorBlock();
     }];
-    [self.objectRequestOperation start];
-//    [self performSelector:@selector() withObject:]
-//    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue currentQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-//        if (error) {
-//        } else {
-//            [RKObjectManager sharedManager].provi
-//        }
-//
-//        hideHUD();
-//    }];
 }
 
 @end

@@ -1,19 +1,19 @@
 //
-// Created by dmitrykorotchenkov on 26.12.12.
+// Created by dmitrykorotchenkov on 19.01.13.
 //
 // To change the template use AppCode | Preferences | File Templates.
 //
 
 
-#import "DPLoginService.h"
+#import "DPRegisterService.h"
 #import "DPUserInfoResponse.h"
 
 
-@implementation DPLoginService
+@implementation DPRegisterService
 
 -(void)sendUser:(NSString *)user password:(NSString *)password{
     NSDictionary *params = @{
-            @"method":@"login",
+            @"method":@"register",
             @"user":user,
             @"password":password
     };

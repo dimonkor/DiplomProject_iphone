@@ -1,19 +1,12 @@
 
+DEPENDENCIES: 
+- MBProgressHUD (= 0.5)
+- RestKit (= 0.20.0pre6)
+- Three20Lite (= 2.2.0)
+
 PODS: 
 - AFNetworking (1.1.0)
-- ASIHTTPRequest (1.8.1): 
-  - ASIHTTPRequest/ASIWebPageRequest (= 1.8.1)
-  - ASIHTTPRequest/CloudFiles (= 1.8.1)
-  - ASIHTTPRequest/S3 (= 1.8.1)
-  - Reachability
-- ASIHTTPRequest/ASIWebPageRequest (1.8.1): 
-  - Reachability
-- ASIHTTPRequest/CloudFiles (1.8.1): 
-  - Reachability
-- ASIHTTPRequest/S3 (1.8.1): 
-  - Reachability
 - MBProgressHUD (0.5)
-- Reachability (3.1.0)
 - RestKit (0.20.0pre6): 
   - RestKit/Core (= 0.20.0pre6)
 - RestKit/Core (0.20.0pre6): 
@@ -33,28 +26,17 @@ PODS:
 - Three20Lite (2.2.0): 
   - SBJson
 
+COCOAPODS: 0.16.0
+
 SPEC CHECKSUMS: 
-  Three20Lite: 7c0485f4e8a56ed7f1528402b73282845277f3a2
-  RestKit/Support: ccca19640fcc3031f82ad4250c44061e2e2ddce7
-  AFNetworking: 761a418233d280c1e0580bcb76ff9cb4c3073d17
-  ASIHTTPRequest: e606d2df58b0aace6c1cf1d39a08d3484f91324a
-  SOCKit: 179515c1a621dd5652a60e9be02ea4adcd25bc9b
-  RestKit/CoreData: ccca19640fcc3031f82ad4250c44061e2e2ddce7
-  Reachability: 1c8584c5f26fa776695efef95caaa50402c94cfb
-  ASIHTTPRequest/CloudFiles: e606d2df58b0aace6c1cf1d39a08d3484f91324a
-  RestKit/ObjectMapping: ccca19640fcc3031f82ad4250c44061e2e2ddce7
+  SBJson: d917ef596960a977b6c20235a90810bc306a48f0
   RestKit/Core: ccca19640fcc3031f82ad4250c44061e2e2ddce7
   RestKit: ccca19640fcc3031f82ad4250c44061e2e2ddce7
-  ASIHTTPRequest/ASIWebPageRequest: e606d2df58b0aace6c1cf1d39a08d3484f91324a
-  SBJson: d917ef596960a977b6c20235a90810bc306a48f0
+  RestKit/Support: ccca19640fcc3031f82ad4250c44061e2e2ddce7
+  Three20Lite: 7c0485f4e8a56ed7f1528402b73282845277f3a2
+  RestKit/ObjectMapping: ccca19640fcc3031f82ad4250c44061e2e2ddce7
   RestKit/Network: ccca19640fcc3031f82ad4250c44061e2e2ddce7
-  ASIHTTPRequest/S3: e606d2df58b0aace6c1cf1d39a08d3484f91324a
+  AFNetworking: 761a418233d280c1e0580bcb76ff9cb4c3073d17
+  RestKit/CoreData: ccca19640fcc3031f82ad4250c44061e2e2ddce7
   MBProgressHUD: b23ee11c42253d6d804e8e0bfabdc334e8b2571f
-
-DEPENDENCIES: 
-- ASIHTTPRequest (= 1.8.1)
-- MBProgressHUD (= 0.5)
-- RestKit (= 0.20.0pre6)
-- Three20Lite (= 2.2.0)
-
-COCOAPODS: 0.16.0
+  SOCKit: 179515c1a621dd5652a60e9be02ea4adcd25bc9b

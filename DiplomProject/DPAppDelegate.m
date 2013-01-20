@@ -7,15 +7,25 @@
 //
 
 #import "DPAppDelegate.h"
+#import "DPApplication.h"
+#import "DPConstants.h"
 
 @implementation DPAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    //self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    //self.window.backgroundColor = [UIColor whiteColor];
-    //[self.window makeKeyAndVisible];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    UIViewController *rootViewController;
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Storyboard"
+                                                             bundle: nil];
+    if ([[DPApplication instance] isLogin]){
+        rootViewController = [mainStoryboard instantiateViewControllerWithIdentifier:mainTabBarControllerID];
+    }  else{
+        rootViewController = [mainStoryboard instantiateViewControllerWithIdentifier:loginControllerID];
+    }
+    self.window.rootViewController = rootViewController;
+    [self.window makeKeyAndVisible];
+
     return YES;
 }
 

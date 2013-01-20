@@ -1,4 +1,4 @@
-        //
+//
 //  DPMainViewController.m
 //  DiplomProject
 //
@@ -11,12 +11,10 @@
 #import "DPUIUtils.h"
 #import "DPSendImageService.h"
 #import "DPAbstractResponse.h"
-
-#define CAMERA_TITLE @"Camera"
-#define LIBRARY_TITLE @"Library"
+#import "DPSendImageResponse.h"
+#import "DPApplication.h"
 
 @interface DPMainViewController ()
-@property(nonatomic, strong) NSData *reciveData;
 @property(nonatomic, strong) DPSendImageService *service;
 
 
@@ -25,69 +23,24 @@
 @implementation DPMainViewController
 
 - (IBAction)choisePhoto {
-    BOOL camera = [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
-    BOOL library = [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary];
-    UIActionSheet *actionSheet = nil;
-    if (library && camera) {
-        actionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:CAMERA_TITLE, LIBRARY_TITLE, nil];
-    } else if (library) {
-        actionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:LIBRARY_TITLE, nil];
-    } else if (camera) {
-        actionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:CAMERA_TITLE, nil];
+    [super choicePhoto:NO];
+}
+
+
+- (void)didFinishPickingImage:(UIImage *)image {
+    if ([[DPApplication instance] isLogin]) {
+        self.service = [[DPSendImageService alloc] init];
+        self.service.completionBlock = ^(DPAbstractResponse *response) {
+            DPSendImageResponse *castedResponse = (DPSendImageResponse *) response;
+            NSLog(castedResponse.thumbnailUrl);
+            hideHUD();
+        };
+        showHUD();
+        [self.service sendImage:image];
     } else {
-        actionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:nil];
+        [DPUIUtils showError:@"Пожалуйста пройдите заново авторизацию в приложении"];
     }
-    [actionSheet showFromRect:CGRectZero inView:self.view animated:YES];
-    
 }
 
-
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    NSString *const clickedButton = [actionSheet buttonTitleAtIndex:buttonIndex];
-    if ([clickedButton isEqualToString:LIBRARY_TITLE]) {
-        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        picker.delegate = self;
-        picker.allowsEditing = NO;
-        [self presentViewController:picker animated:YES completion:nil];
-    } else if ([clickedButton isEqualToString:CAMERA_TITLE]) {
-        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-        picker.delegate = self;
-        picker.allowsEditing = NO;
-        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-        [self presentViewController:picker animated:YES completion:nil];
-    }
-    
-}
-
-
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo {
-    [picker dismissViewControllerAnimated:YES completion:nil];
-    
-    self.service = [[DPSendImageService alloc] init];
-    self.service.completionBlock = ^(DPAbstractResponse *response){
-        NSLog(@"dfs");
-    };
-    [self.service sendImage:image];
-
-//    NSString *url = @"http://192.168.0.219/diplom/save_image.php";
-//
-//
-//    NSURL *baseURL = [[NSURL alloc] initWithString:url];
-//    AFHTTPClient *client = [AFHTTPClient clientWithBaseURL:baseURL];
-//    NSURLRequest *request = [client multipartFormRequestWithMethod:@"POST" path:nil parameters:nil constructingBodyWithBlock:^(id <AFMultipartFormData> formData){
-//        [formData appendPartWithFileData:imageData name:@"image" fileName:@"imageName" mimeType:@"image/jpeg"];
-//    }];
-//
-//
-//    showHUD();
-//    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue currentQueue] completionHandler:^(NSURLResponse *response , NSData *data,  NSError *error){
-//        if (error){
-//
-//        }
-//        hideHUD();
-//    }];
-
-}
 
 @end
