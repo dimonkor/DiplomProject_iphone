@@ -1,24 +1,24 @@
 //
-// Created by dmitrykorotchenkov on 26.12.12.
+// Created by dmitrykorotchenkov on 24.01.13.
 //
 // To change the template use AppCode | Preferences | File Templates.
 //
 
 
-#import "DPUserInfoResponse.h"
+#import "DPUsersListResponse.h"
 #import "RestKit.h"
 #import "DPUser.h"
 
 
-@implementation DPUserInfoResponse
+@implementation DPUsersListResponse
 
 + (RKObjectMapping *)mapping {
     RKObjectMapping *mapping = [super mapping];
+    [mapping addAttributeMappingsFromArray:@[@"count"]];
     [mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"content"
-                                                                            toKeyPath:@"userInfo"
+                                                                            toKeyPath:@"users"
                                                                           withMapping:[DPUser mapping]]];
     return mapping;
 }
-
 
 @end

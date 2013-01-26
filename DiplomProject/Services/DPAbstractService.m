@@ -15,6 +15,12 @@
 #import "RKObjectRequestOperation.h"
 
 
+@interface DPAbstractService ()
+
+@property(nonatomic, strong) RKObjectRequestOperation *currentOperation;
+
+@end
+
 @implementation DPAbstractService
 
 - (id)init {
@@ -48,8 +54,9 @@
             [RKResponseDescriptor responseDescriptorWithMapping:[responseClass mapping]
                                                     pathPattern:nil keyPath:@"" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
 
-    RKObjectRequestOperation *objectRequestOperation = [[RKObjectRequestOperation alloc] initWithRequest:request responseDescriptors:@[responseDescriptor]];
-    [objectRequestOperation setCompletionBlockWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+
+    self.currentOperation = [[RKObjectRequestOperation alloc] initWithRequest:request responseDescriptors:@[responseDescriptor]];
+    [self.currentOperation setCompletionBlockWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSLog(@"Recive response: %@", [[NSString alloc] initWithData:operation.HTTPRequestOperation.responseData encoding:NSUTF8StringEncoding]);
         DPAbstractResponse *response = mappingResult.firstObject;
         if (!response || response.hasError) {
@@ -58,11 +65,11 @@
         else {
             self.completionBlock(response);
         }
-    }                                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
+    }                                            failure:^(RKObjectRequestOperation *operation, NSError *error) {
         NSLog(@"Operation failed with error: %@", error);
         self.connectionErrorBlock();
     }];
-    [objectRequestOperation start];
+    [self.currentOperation start];
 }
 
 - (void)sendRequest:(NSDictionary *)params
@@ -111,6 +118,10 @@
         }
 
     }];
+}
+
+-(void)cancel{
+    [self.currentOperation cancel];
 }
 
 @end

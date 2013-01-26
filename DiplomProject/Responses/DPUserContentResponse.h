@@ -9,8 +9,9 @@
 #import "DPAbstractResponse.h"
 
 
-@interface DPHomeContentResponse : DPAbstractResponse
+@interface DPUserContentResponse : DPAbstractResponse
 
 @property (nonatomic, strong) NSArray *content;
+@property (nonatomic, strong) NSNumber *canAddToFriends;
 
 @end

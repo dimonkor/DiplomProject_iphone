@@ -8,6 +8,7 @@
 #import "DPHeaderTableCell.h"
 #import "Three20UI.h"
 #import "UIViewAdditions.h"
+#import "TTImageViewWithDefaultAvatar.h"
 
 @interface DPHeaderTableCell ()
 
@@ -23,7 +24,7 @@
 
 - (void)fillWithName:(NSString *)username avatarUrl:(NSString *)avatarUrl {
     if (!self.ttImageView) {
-        self.ttImageView = [[TTImageView alloc] initWithFrame:CGRectMake(0, 0, self.avatarHolder.width, self.avatarHolder.height)];
+        self.ttImageView = [[TTImageViewWithDefaultAvatar alloc] initWithFrame:CGRectMake(0, 0, self.avatarHolder.width, self.avatarHolder.height)];
         self.ttImageView.delegate= self;
         [self.avatarHolder addSubview:self.ttImageView];
     }

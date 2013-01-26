@@ -5,15 +5,16 @@
 //
 
 
-#import "DPHomeContentResponse.h"
+#import "DPUserContentResponse.h"
 #import "RestKit.h"
 #import "DPContentElement.h"
 
 
-@implementation DPHomeContentResponse
+@implementation DPUserContentResponse
 
 + (RKObjectMapping *)mapping {
     RKObjectMapping *mapping = [super mapping];
+    [mapping addAttributeMappingsFromDictionary:@{@"canAddToFriends" : @"canAddToFriends"}];
     [mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"content"
                                                                             toKeyPath:@"content"
                                                                           withMapping:[DPContentElement mapping]]];

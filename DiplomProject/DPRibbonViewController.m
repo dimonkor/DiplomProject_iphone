@@ -12,36 +12,79 @@
 #import "DPUserInfo.h"
 #import "DPGetHomeContentService.h"
 #import "DPAbstractResponse.h"
-#import "DPHomeContentResponse.h"
+#import "DPUserContentResponse.h"
 #import "DPContentElement.h"
+#import "DPFriendViewController.h"
+#import "DPUser.h"
+#import "DPUIUtils.h"
+#import "DPApplication.h"
+#import "DPSendImageService.h"
+#import "DPSendImageResponse.h"
 
 @interface DPRibbonViewController ()
 
-@property(strong, nonatomic) IBOutlet DPHeaderTableCell *headerTableCell;
 @property(nonatomic, strong) DPGetHomeContentService *service;
-@property(nonatomic, strong) NSArray *dataSource;
-@property (strong, nonatomic) IBOutlet UITableView *tableView;
+
+@property(nonatomic, strong) DPSendImageService *sendImageService;
 
 
 @end
 
 @implementation DPRibbonViewController
 
-- (void)loadView {
-    [super loadView];
-    self.service = [[DPGetHomeContentService alloc] init];
-    self.service.completionBlock = ^(DPAbstractResponse *response) {
-        DPHomeContentResponse *castedResponse = (DPHomeContentResponse *) response;
-        self.dataSource = castedResponse.content;
-        [self.tableView reloadData];
-    };
-    [self.service getHomeContent];
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self updateContent];
+}
 
+- (void)updateContent {
+    self.service = [[DPGetHomeContentService alloc] init];
+    __weak DPRibbonViewController *weakSelf = self;
+    self.service.completionBlock = ^(DPAbstractResponse *response) {
+        DPUserContentResponse *castedResponse = (DPUserContentResponse *) response;
+        weakSelf.dataSource = castedResponse.content;
+        [weakSelf.tableView reloadData];
+        hideHUD();
+    };
+    showHUD();
+    [self.service getHomeContent];
+}
+
+- (IBAction)choisePhoto {
+    [super choicePhoto:NO];
 }
 
 
+- (void)didFinishPickingImage:(UIImage *)image {
+    if ([[DPApplication instance] isLogin]) {
+        self.sendImageService = self.sendImageService ? : [[DPSendImageService alloc] init];
+        __weak DPRibbonViewController *weakSelf = self;
+        self.sendImageService.completionBlock = ^(DPSendImageResponse *response) {
+            hideHUD();
+            NSLog(response.thumbnailUrl);
+            [weakSelf updateContent];
+        };
+        showHUD();
+        [self.sendImageService sendImage:image];
+    } else {
+        [DPUIUtils showError:@"Пожалуйста пройдите заново авторизацию в приложении"];
+    }
+}
+
+- (void)didSelectElement:(DPContentElement *)element {
+    if (![self isMemberOfClass:[DPFriendViewController class]]) {
+        DPFriendViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"friendViewController"];
+        DPUser *user = [[DPUser alloc] init];
+        user.avatarUrl = element.avatar_url;
+        user.username = element.username;
+        user.userId = element.user_id;
+        controller.userInfo = user;
+        [self.navigationController pushViewController:controller animated:YES];
+    }
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    if (self.dataSource && self.dataSource.count>0)
+    if (self.dataSource && self.dataSource.count > 0)
         return 2;
     else
         return 1;
@@ -54,15 +97,19 @@
         return self.dataSource.count;
 }
 
+- (DPHeaderTableCell *)getHeaderCell {
+    [self.headerTableCell fillWithName:[DPUserInfo userName] avatarUrl:[DPUserInfo avatarUrl]];
+    return self.headerTableCell;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        [self.headerTableCell fillWithName:[DPUserInfo userName] avatarUrl:[DPUserInfo avatarUrl]];
-        return self.headerTableCell;
+        return self.getHeaderCell;
     }
     else {
         DPContentElementTableCell *cell = [tableView dequeueReusableCellWithIdentifier:kContentElementCellID];
         cell = cell ? : [[DPContentElementTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kContentElementCellID];
-        [cell fillWithElement:self.dataSource[(NSUInteger) indexPath.row]];
+        [cell fillWithElement:self.dataSource[(NSUInteger) indexPath.row] ribbonController:self];
         return cell;
     }
 
@@ -72,7 +119,7 @@
     if (indexPath.section == 0)
         return self.headerTableCell.height;
     else
-        return ((DPContentElement *) self.dataSource[(NSUInteger) indexPath.row]).thumbnailSize.height + 45 + 10;
+        return ((DPContentElement *) self.dataSource[(NSUInteger) indexPath.row]).thumbnailSize.height + 70 + 10;
 
 }
 

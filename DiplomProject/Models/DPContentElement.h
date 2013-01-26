@@ -25,6 +25,8 @@
 
 - (NSString *)originalUrl;
 
+- (NSString *)avatarUrl;
+
 - (CGSize)originalSize;
 
 - (CGSize)thumbnailSize;

@@ -28,6 +28,7 @@ static NSString *kAvatarUrlNameKey = @"avatarUrlUserInfo";
 + (NSString *)avatarUrl {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *imageName = [defaults objectForKey:kAvatarUrlNameKey];
+    return imageName;
     return [NSString stringWithFormat:@"%@/images/thumbnail/%@",API_PATH,imageName];
 }
 

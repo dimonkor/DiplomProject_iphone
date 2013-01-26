@@ -32,6 +32,13 @@
     return [NSString stringWithFormat:@"%@/images/original/%@",API_PATH,self.photo_url];
 }
 
+-(NSString *)avatarUrl{
+    if (self.avatar_url.length>3)
+        return [NSString stringWithFormat:@"%@/images/%@",API_PATH,self.avatar_url];
+    else
+        return nil;
+}
+
 -(CGSize)originalSize{
     return CGSizeMake(self.photo_width.intValue, self.photo_height.intValue);
 }
@@ -39,5 +46,6 @@
 -(CGSize)thumbnailSize{
     return CGSizeMake(280, self.photo_height.intValue * 280 / self.photo_width.intValue);
 }
+
 
 @end

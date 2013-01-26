@@ -16,6 +16,7 @@
 #import "DPUserInfoResponse.h"
 #import "TTImageViewInternal.h"
 #import "DPConstants.h"
+#import "DPUser.h"
 
 @interface DPUserInfoController ()
 
@@ -80,10 +81,9 @@
         if (!self.userInfoService) {
             self.userInfoService = [[DPUpdateUserInfoService alloc] init];
         }
-        self.userInfoService.completionBlock = ^(DPAbstractResponse *response) {
+        self.userInfoService.completionBlock = ^(DPUserInfoResponse *response) {
             self.isNeedUpdateAvatar = NO;
-            DPUserInfoResponse *castedResponse = (DPUserInfoResponse *) response;
-            [DPUserInfo setUsername:castedResponse.username avatarImageName:castedResponse.avatar_url];
+            [DPUserInfo setUsername:response.userInfo.username avatarImageName:response.userInfo.avatarUrl];
             hideHUD();
         };
         showHUD();

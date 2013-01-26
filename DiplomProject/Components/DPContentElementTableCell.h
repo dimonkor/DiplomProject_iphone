@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DPRibbonViewController.h"
 
 @class DPContentElement;
 
 @interface DPContentElementTableCell : UITableViewCell
-- (void)fillWithElement:(DPContentElement *)element;
 
+- (void)fillWithElement:(DPContentElement *)element ribbonController:(DPRibbonViewController *)ribbonViewController;
 
 @end

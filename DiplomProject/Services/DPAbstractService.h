@@ -15,13 +15,15 @@
 
 @property(nonatomic, strong) void (^connectionErrorBlock)();
 @property(nonatomic, strong) void (^errorBlock)(DPAbstractResponse *);
-@property(nonatomic, strong) void (^completionBlock)(DPAbstractResponse *);
+@property(nonatomic, strong) void (^completionBlock)(id);
 
 @property(nonatomic, strong) RKObjectRequestOperation *objectRequestOperation;
 
 - (void)sendRequest:(NSDictionary *)params responseClass:(Class)responseClass;
 
 - (void)sendRequest:(NSDictionary *)params responseClass:(Class)responseClass withFile:(NSData *)file fileName:(NSString *)fileName mimeType:(NSString *)mimeType;
+
+- (void)cancel;
 
 
 @end

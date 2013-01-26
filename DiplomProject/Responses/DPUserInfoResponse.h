@@ -8,10 +8,11 @@
 #import <Foundation/Foundation.h>
 #import "DPAbstractResponse.h"
 
+@class DPUser;
+
 
 @interface DPUserInfoResponse : DPAbstractResponse
 
-@property (nonatomic, strong) NSString *username;
-@property (nonatomic, strong) NSString *avatar_url;
+@property (nonatomic, strong) DPUser *userInfo;
 
 @end

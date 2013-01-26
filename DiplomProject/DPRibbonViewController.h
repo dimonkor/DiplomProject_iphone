@@ -6,11 +6,24 @@
 
 
 #import <Foundation/Foundation.h>
+#import "DPViewControllerWithActionSheet.h"
 
 @class DPGetHomeContentService;
+@class DPContentElement;
+@class DPHeaderTableCell;
 
 
 static NSString *const kContentElementCellID = @"contentElementCellID";
 
-@interface DPRibbonViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface DPRibbonViewController : DPViewControllerWithActionSheet <UITableViewDataSource, UITableViewDelegate>
+
+@property(nonatomic, strong) NSArray *dataSource;
+@property(strong, nonatomic) IBOutlet UITableView *tableView;
+@property(strong, nonatomic) IBOutlet DPHeaderTableCell *headerTableCell;
+
+- (void)didSelectElement:(DPContentElement *)element;
+
+- (DPHeaderTableCell *)getHeaderCell;
+
+
 @end

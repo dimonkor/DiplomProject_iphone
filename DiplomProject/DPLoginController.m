@@ -16,6 +16,7 @@
 #import "DPRegisterService.h"
 #import "DPUserInfo.h"
 #import "DPConstants.h"
+#import "DPUser.h"
 
 @interface DPLoginController ()
 
@@ -33,10 +34,9 @@
 - (IBAction)done:(id)sender {
 
     __weak DPLoginController *weakSelf = self;
-    void (^completionBlock)(DPAbstractResponse *) = ^(DPAbstractResponse *response) {
-        DPUserInfoResponse *castedResponse = (DPUserInfoResponse *) response;
+    void (^completionBlock)(DPUserInfoResponse *) = ^(DPUserInfoResponse *response) {
         [[DPApplication instance] loginUser:weakSelf.username.text password:weakSelf.password.text];
-        [DPUserInfo setUsername:castedResponse.username avatarImageName:castedResponse.avatar_url];
+        [DPUserInfo setUsername:response.userInfo.username avatarImageName:response.userInfo.avatarUrl];
         hideHUD();
         [DPUIUtils appWindow].rootViewController = [self.storyboard instantiateViewControllerWithIdentifier:mainTabBarControllerID];
         if (self.segmentController.selectedSegmentIndex == 1){

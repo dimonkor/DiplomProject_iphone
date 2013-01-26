@@ -7,7 +7,7 @@
 
 #import "DPGetHomeContentService.h"
 #import "DPApplication.h"
-#import "DPHomeContentResponse.h"
+#import "DPUserContentResponse.h"
 
 
 @implementation DPGetHomeContentService
@@ -20,7 +20,7 @@
         @"user" : application.username,
         @"password" : application.password
     };
-    [self sendRequest:params responseClass:[DPHomeContentResponse class]];
+    [self sendRequest:params responseClass:[DPUserContentResponse class]];
 }
 
 @end
