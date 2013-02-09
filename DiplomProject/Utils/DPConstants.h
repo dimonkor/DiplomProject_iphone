@@ -9,7 +9,7 @@
 
 //static const NSString *API_PATH = @"http://192.168.0.219/diplom/api";
 static const NSString *API_PATH = @"http://192.168.0.99/diplom/api";
-//static const NSString *API_PATH = @"http://diplomproject.500mb.net/api/";
+//static const NSString *API_PATH = @"http://diplomproject.zz.mu/api/";
 
 static  NSString *mainTabBarControllerID = @"mainTabBarController";
 static  NSString *loginControllerID = @"loginController";

@@ -41,4 +41,14 @@
     [self sendRequest:params responseClass:[DPUsersListResponse class]];
 }
 
+-(void)getListeners{
+    DPApplication *application = [DPApplication instance];
+    NSDictionary *params = @{
+            @"method" : @"get_listeners_list",
+            @"user" : application.username,
+            @"password" : application.password
+    };
+    [self sendRequest:params responseClass:[DPUsersListResponse class]];
+}
+
 @end

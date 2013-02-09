@@ -16,7 +16,8 @@ void showHUD(){
 }
 
 void hideHUD(){
-    [MBProgressHUD hideAllHUDsForView:[DPUIUtils appWindow] animated:YES];
+    [MBProgressHUD hideHUDForView:[DPUIUtils appWindow] animated:YES];
+//    [MBProgressHUD hideAllHUDsForView:[DPUIUtils appWindow] animated:YES];
 }
 
 @implementation DPUIUtils

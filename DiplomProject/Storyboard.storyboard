@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="g5R-RQ-HL0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="g5R-RQ-HL0">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
         <!--Login Controller - loginController-->
@@ -153,7 +153,7 @@
                     </connections>
                 </tableViewCell>
             </objects>
-            <point key="canvasLocation" x="-644" y="609"/>
+            <point key="canvasLocation" x="-628" y="1105"/>
         </scene>
         <!--Navigation Controller - Лента-->
         <scene sceneID="BQR-6v-m1y">
@@ -170,7 +170,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3y8-qn-3xm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1159" y="601"/>
+            <point key="canvasLocation" x="-1143" y="1097"/>
         </scene>
         <!--User Info Controller - Профиль-->
         <scene sceneID="Wu7-b6-dE4">
@@ -234,7 +234,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mj9-BC-EYL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1159" y="18"/>
+            <point key="canvasLocation" x="-1143" y="514"/>
         </scene>
         <!--Navigation Controller - Друзья-->
         <scene sceneID="H7G-qY-lQc">
@@ -260,6 +260,7 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <sections/>
                         <connections>
                             <outlet property="dataSource" destination="65o-JT-4OO" id="XC6-7m-shu"/>
                             <outlet property="delegate" destination="65o-JT-4OO" id="Kiy-X4-uPw"/>
@@ -273,8 +274,30 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="listenerCell" destination="yJn-Jd-NXR" id="x0v-7I-KwO"/>
+                        <segue destination="GHn-9g-Efv" kind="push" identifier="listenersSegueID" id="Dsf-67-HCD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eik-do-llM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="L0X-Ga-GmH" style="IBUITableViewCellStyleDefault" id="yJn-Jd-NXR">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="69"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Ваши подписчики" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="L0X-Ga-GmH">
+                                <rect key="frame" x="10" y="0.0" width="280" height="69"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </view>
+                </tableViewCell>
             </objects>
             <point key="canvasLocation" x="-712" y="1896"/>
         </scene>
@@ -317,6 +340,27 @@
             </objects>
             <point key="canvasLocation" x="-281" y="1896"/>
         </scene>
+        <!--Listeners Controller - Ваши подписчики-->
+        <scene sceneID="04p-MR-7kB">
+            <objects>
+                <viewController id="GHn-9g-Efv" customClass="DPListenersController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="70" sectionHeaderHeight="22" sectionFooterHeight="22" id="mXV-qm-AW4">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="GHn-9g-Efv" id="uCd-ui-2YQ"/>
+                            <outlet property="delegate" destination="GHn-9g-Efv" id="BP2-LL-g0c"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Ваши подписчики" id="GWW-5H-AYO">
+                        <barButtonItem key="backBarButtonItem" title="Назад" id="QYe-1g-BBf"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4er-Lv-E6D" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-281" y="2470"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="RAx-nF-pGt">
             <objects>
@@ -328,9 +372,9 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="4Q8-76-GDf" kind="relationship" relationship="viewControllers" id="SvN-tV-L1F"/>
-                        <segue destination="ZO3-Xh-YA4" kind="relationship" relationship="viewControllers" id="o75-A0-THx"/>
-                        <segue destination="Tig-qn-uPB" kind="relationship" relationship="viewControllers" id="fkj-8U-BmP"/>
+                        <segue destination="Tig-qn-uPB" kind="relationship" relationship="viewControllers" id="h2N-rg-LzX"/>
+                        <segue destination="ZO3-Xh-YA4" kind="relationship" relationship="viewControllers" id="NZO-sE-6Bf"/>
+                        <segue destination="4Q8-76-GDf" kind="relationship" relationship="viewControllers" id="06B-CI-uaK"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nB3-5L-sdS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -433,10 +477,163 @@
                     </connections>
                 </tableViewCell>
             </objects>
-            <point key="canvasLocation" x="450" y="1346"/>
+            <point key="canvasLocation" x="28" y="1097"/>
+        </scene>
+        <!--Comments Controller-->
+        <scene sceneID="LuY-2M-TDE">
+            <objects>
+                <viewController storyboardIdentifier="commentcControllerID" id="5DO-sa-i2Z" customClass="DPCommentsController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QwO-JN-4Ha">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="214" sectionHeaderHeight="22" sectionFooterHeight="22" id="KYR-s3-ndY">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="325"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="commentCellID" rowHeight="214" id="EqK-GO-LjM" customClass="DPCommentElementCell">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="214"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="213"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Иванов Иван" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aID-O7-tJv">
+                                                    <rect key="frame" x="20" y="10" width="261" height="22"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <label autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5vH-7C-aBc">
+                                                    <rect key="frame" x="20" y="40" width="42" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="12"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <connections>
+                                            <outlet property="textLabel" destination="5vH-7C-aBc" id="Z1i-sk-sGe"/>
+                                            <outlet property="usernameLabel" destination="aID-O7-tJv" id="b95-gu-OeK"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="5DO-sa-i2Z" id="fb5-8t-61M"/>
+                                    <outlet property="delegate" destination="5DO-sa-i2Z" id="jBg-QC-OeC"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="M3b-Lz-u0M">
+                                <rect key="frame" x="0.0" y="324" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Добавить комментарий">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="8Ld-ZB-kVU" kind="modal" identifier="addCommentSegueID" id="UVt-j4-BME"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="tableView" destination="KYR-s3-ndY" id="mJF-Yf-28q"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7HP-3r-Vg6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="436" y="1045"/>
+        </scene>
+        <!--Add Comment Controller - Коментарий-->
+        <scene sceneID="q2Y-8R-0AG">
+            <objects>
+                <viewController id="mSq-TY-ps6" customClass="DPAddCommentController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9Tb-fu-Wwx">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="BeU-eH-afv">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="mSq-TY-ps6" id="G28-pX-sQb"/>
+                                </connections>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Коментарий" id="ISo-AQ-bI5">
+                        <barButtonItem key="leftBarButtonItem" title="Отмена" id="anB-xa-1K2">
+                            <connections>
+                                <action selector="cancel:" destination="mSq-TY-ps6" id="uSm-p9-Raz"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Отправить" id="RdM-rU-U7o">
+                            <connections>
+                                <action selector="send:" destination="mSq-TY-ps6" id="yER-ab-gVC"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="textView" destination="BeU-eH-afv" id="grY-cT-EMR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Umz-JC-iZe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1456" y="1040"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="G3A-qV-flZ">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="8Ld-ZB-kVU" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="wuh-9m-DaN">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="mSq-TY-ps6" kind="relationship" relationship="rootViewController" id="PWM-AN-j25"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6TK-J9-Cdy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="980" y="1040"/>
         </scene>
     </scenes>
     <classes>
+        <class className="DPAddCommentController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DPAddCommentController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="textView" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="DPCommentElementCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DPCommentElementCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="textLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="usernameLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="DPCommentsController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DPCommentsController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
         <class className="DPContentElementTableCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DPContentElementTableCell.h"/>
             <relationships>
@@ -449,8 +646,11 @@
         <class className="DPFriendViewController" superclassName="DPRibbonViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DPFriendViewController.h"/>
         </class>
-        <class className="DPFriendsListController" superclassName="UIViewController">
+        <class className="DPFriendsListController" superclassName="DPUsersListController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DPFriendsListController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="listenerCell" candidateClass="UITableViewCell"/>
+            </relationships>
         </class>
         <class className="DPHeaderTableCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DPHeaderTableCell.h"/>
@@ -459,10 +659,12 @@
                 <relationship kind="outlet" name="usernameLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
+        <class className="DPListenersController" superclassName="DPUsersListController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DPListenersController.h"/>
+        </class>
         <class className="DPLoginController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DPLoginController.h"/>
             <relationships>
-                <relationship kind="action" name="done:"/>
                 <relationship kind="outlet" name="password" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="segmentController" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="username" candidateClass="UITextField"/>
@@ -481,6 +683,9 @@
                 <relationship kind="outlet" name="avatarViewHolder" candidateClass="UIView"/>
                 <relationship kind="outlet" name="textField" candidateClass="UITextField"/>
             </relationships>
+        </class>
+        <class className="DPUsersListController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DPUsersListController.h"/>
         </class>
         <class className="DPViewControllerWithActionSheet" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DPViewControllerWithActionSheet.h"/>

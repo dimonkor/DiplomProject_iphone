@@ -17,7 +17,7 @@
 
 @interface DPFriendsListController ()
 @property(nonatomic, strong) DPFriendsListService *service;
-@property(nonatomic, strong) NSArray *dataSource;
+@property(strong, nonatomic) IBOutlet UITableViewCell *listenerCell;
 @property(nonatomic, strong) DPOperationWithFriendsService *deleteFriendService;
 
 
@@ -32,7 +32,7 @@
     self.service.completionBlock = ^(DPUsersListResponse *response) {
         hideHUD();
         weakSelf.dataSource = response.users;
-        [(UITableView *) weakSelf.view reloadData];
+        [weakSelf.tableView reloadData];
     };
     showHUD();
     [self.service getFriends];
@@ -43,27 +43,41 @@
     return (UITableView *) self.view;
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 2;
+}
+
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.dataSource.count;
+    if (section == 0)
+        return 1;
+    else
+        return self.dataSource.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    DPUserTableCell *cell = [tableView dequeueReusableCellWithIdentifier:kFriendCellID];
-    if (!cell) {
-        cell = [[DPUserTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kFriendCellID];
+    if (indexPath.section == 0)
+        return self.listenerCell;
+    else {
+        NSUInteger index = (NSUInteger) indexPath.row;
+        return [self getUserCell:tableView forIndex:index];
     }
-    [cell fillWithUserInfo:[self.dataSource objectAtIndex:(NSUInteger) indexPath.row]];
-    return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    DPFriendViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"friendViewController"];
-    controller.userInfo = self.dataSource[(NSUInteger) indexPath.row];
-    [self.navigationController pushViewController:controller animated:YES];
+    if (indexPath.section == 0) {
+        [self performSegueWithIdentifier:@"listenersSegueID" sender:self];
+    }
+    else {
+        [self selectRow:indexPath];
+    }
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
+    if (indexPath.section == 0)
+        return NO;
+    else
+        return YES;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -88,4 +102,8 @@
 }
 
 
+- (void)viewDidUnload {
+    [self setListenerCell:nil];
+    [super viewDidUnload];
+}
 @end

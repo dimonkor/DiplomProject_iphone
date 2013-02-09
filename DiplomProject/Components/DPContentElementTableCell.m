@@ -28,8 +28,13 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.ttImageView = [[TTImageView alloc] initWithFrame:CGRectMake(20, 75, 320, 100)];
+    self.ttImageView.layer.masksToBounds = YES;
+    [self.ttImageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapOnPhoto)]];
+    [self.ttImageView.layer setCornerRadius:15.0];
     [self addSubview:self.ttImageView];
     self.avatarView = [[TTImageViewWithDefaultAvatar alloc] initWithFrame:CGRectMake(20, 10, 50, 50)];
+    self.avatarView.layer.masksToBounds = YES;
+    [self.avatarView.layer setCornerRadius:7.0];
     [self insertSubview:self.avatarView atIndex:0];
 }
 
@@ -43,8 +48,14 @@
     self.ribbonViewController = ribbonViewController;
 }
 
+- (void)tapOnPhoto {
+    if (self.ribbonViewController && self.element) {
+        [self.ribbonViewController didSelectPhoto:self.element.photo_id];
+    }
+}
+
 - (IBAction)tapOnUser:(id)sender {
-    if (self.ribbonViewController && self.element){
+    if (self.ribbonViewController && self.element) {
         [self.ribbonViewController didSelectElement:self.element];
     }
 }

@@ -18,6 +18,7 @@
 @property (nonatomic, strong) NSString *photo_url;
 @property (nonatomic, strong) NSNumber *photo_width;
 @property (nonatomic, strong) NSNumber *photo_height;
+@property (nonatomic, strong) NSNumber *photo_id;
 
 + (RKObjectMapping *)mapping;
 

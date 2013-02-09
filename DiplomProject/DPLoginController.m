@@ -38,9 +38,14 @@
         [[DPApplication instance] loginUser:weakSelf.username.text password:weakSelf.password.text];
         [DPUserInfo setUsername:response.userInfo.username avatarImageName:response.userInfo.avatarUrl];
         hideHUD();
-        [DPUIUtils appWindow].rootViewController = [self.storyboard instantiateViewControllerWithIdentifier:mainTabBarControllerID];
+
+        UITabBarController *tabBarController = [self.storyboard instantiateViewControllerWithIdentifier:mainTabBarControllerID];
+        [DPUIUtils appWindow].rootViewController = tabBarController;
         if (self.segmentController.selectedSegmentIndex == 1){
+            tabBarController.selectedIndex = 2;
             [DPUIUtils showMessage:@"Пожалуйста заполните информацию о себе" withTitle:@"Инфо"];
+        } else {
+            tabBarController.selectedIndex = 1;
         }
 
     };
@@ -57,10 +62,6 @@
         showHUD();
         [self.registerService sendUser:self.username.text password:self.password.text];
     }
-
-
-
-
 }
 
 @end

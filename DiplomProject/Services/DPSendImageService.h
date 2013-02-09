@@ -10,6 +10,6 @@
 
 
 @interface DPSendImageService : DPAbstractService
-- (void)sendImage:(UIImage *)image;
+- (void)sendImage:(UIImage *)image forFriends:(BOOL)forFriends;
 
 @end

@@ -20,12 +20,19 @@
 #import "DPApplication.h"
 #import "DPSendImageService.h"
 #import "DPSendImageResponse.h"
+#import "DPCommentsController.h"
+
+static NSString *const kForAllBtn = @"Всех";
+
+static NSString *const kForFriendsBtn = @"Друзей";
 
 @interface DPRibbonViewController ()
 
 @property(nonatomic, strong) DPGetHomeContentService *service;
 
 @property(nonatomic, strong) DPSendImageService *sendImageService;
+@property(nonatomic, strong) UIImage *image;
+@property(nonatomic, strong) UIActionSheet *actionSheet;
 
 
 @end
@@ -33,14 +40,14 @@
 @implementation DPRibbonViewController
 
 - (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
     [self updateContent];
 }
 
 - (void)updateContent {
-    self.service = [[DPGetHomeContentService alloc] init];
+    self.service = self.service ? : [[DPGetHomeContentService alloc] init];
     __weak DPRibbonViewController *weakSelf = self;
     self.service.completionBlock = ^(DPAbstractResponse *response) {
+        hideHUD();
         DPUserContentResponse *castedResponse = (DPUserContentResponse *) response;
         weakSelf.dataSource = castedResponse.content;
         [weakSelf.tableView reloadData];
@@ -56,18 +63,40 @@
 
 
 - (void)didFinishPickingImage:(UIImage *)image {
-    if ([[DPApplication instance] isLogin]) {
-        self.sendImageService = self.sendImageService ? : [[DPSendImageService alloc] init];
-        __weak DPRibbonViewController *weakSelf = self;
-        self.sendImageService.completionBlock = ^(DPSendImageResponse *response) {
-            hideHUD();
-            NSLog(response.thumbnailUrl);
-            [weakSelf updateContent];
-        };
-        showHUD();
-        [self.sendImageService sendImage:image];
+    self.image = image;
+    self.actionSheet = [[UIActionSheet alloc] initWithTitle:@"Фотография доступна для"
+                                                   delegate:self
+                                          cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:kForAllBtn, kForFriendsBtn, nil];
+    [self.actionSheet showFromRect:CGRectZero inView:[DPUIUtils appWindow] animated:YES];
+
+
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if ([actionSheet isEqual:self.actionSheet]) {
+
+        if ([[DPApplication instance] isLogin]) {
+            self.sendImageService = self.sendImageService ? : [[DPSendImageService alloc] init];
+            __weak DPRibbonViewController *weakSelf = self;
+            self.sendImageService.completionBlock = ^(DPSendImageResponse *response) {
+                hideHUD();
+                hideHUD();
+                NSLog(response.thumbnailUrl);
+                [weakSelf updateContent];
+            };
+            showHUD();
+            NSString *const clickedButton = [actionSheet buttonTitleAtIndex:buttonIndex];
+            if ([clickedButton isEqualToString:kForAllBtn]) {
+                [self.sendImageService sendImage:self.image forFriends:NO];
+            } else if ([clickedButton isEqualToString:kForFriendsBtn]) {
+                [self.sendImageService sendImage:self.image forFriends:YES];
+            }
+        } else {
+            [DPUIUtils showError:@"Пожалуйста пройдите заново авторизацию в приложении"];
+        }
+
     } else {
-        [DPUIUtils showError:@"Пожалуйста пройдите заново авторизацию в приложении"];
+        [super actionSheet:actionSheet clickedButtonAtIndex:buttonIndex];
     }
 }
 
@@ -81,6 +110,13 @@
         controller.userInfo = user;
         [self.navigationController pushViewController:controller animated:YES];
     }
+}
+
+- (void)didSelectPhoto:(NSNumber *)photoId {
+    DPCommentsController *commentsController = [self.storyboard instantiateViewControllerWithIdentifier:@"commentcControllerID"];
+    commentsController.photo_id = photoId;
+    [self.navigationController pushViewController:commentsController animated:YES];
+
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

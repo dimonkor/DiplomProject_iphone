@@ -15,13 +15,16 @@
 
 static NSString *const kContentElementCellID = @"contentElementCellID";
 
-@interface DPRibbonViewController : DPViewControllerWithActionSheet <UITableViewDataSource, UITableViewDelegate>
+@interface DPRibbonViewController : DPViewControllerWithActionSheet <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate>
 
 @property(nonatomic, strong) NSArray *dataSource;
 @property(strong, nonatomic) IBOutlet UITableView *tableView;
 @property(strong, nonatomic) IBOutlet DPHeaderTableCell *headerTableCell;
 
 - (void)didSelectElement:(DPContentElement *)element;
+
+- (void)didSelectPhoto:(NSNumber *)photoId;
+
 
 - (DPHeaderTableCell *)getHeaderCell;
 

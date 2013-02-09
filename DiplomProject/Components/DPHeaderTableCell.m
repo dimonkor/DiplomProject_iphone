@@ -27,6 +27,8 @@
         self.ttImageView = [[TTImageViewWithDefaultAvatar alloc] initWithFrame:CGRectMake(0, 0, self.avatarHolder.width, self.avatarHolder.height)];
         self.ttImageView.delegate= self;
         [self.avatarHolder addSubview:self.ttImageView];
+        self.avatarHolder.layer.masksToBounds = YES;
+        [self.avatarHolder.layer setCornerRadius:10.0];
     }
     if (self.ttImageView.urlPath != avatarUrl) {
         self.ttImageView.urlPath = avatarUrl;

@@ -35,7 +35,6 @@
 
 
 - (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
     if (self.userInfo){
         self.service = [[DPFriendContentService alloc] init];
         __weak DPFriendViewController *weakSelf = self;

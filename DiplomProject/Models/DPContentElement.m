@@ -19,7 +19,8 @@
             @"avatar_url",
             @"photo_url",
             @"photo_width",
-            @"photo_height"
+            @"photo_height",
+            @"photo_id"
     ]];
     return mapping;
 }

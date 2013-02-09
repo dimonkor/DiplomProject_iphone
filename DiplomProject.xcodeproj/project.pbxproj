@@ -26,6 +26,7 @@
 		C5582194C9EC3FD7AABFC092 /* DPUsersListResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = C5582321B7D9400479F821EF /* DPUsersListResponse.m */; };
 		C55821CA137A56184A9B0278 /* DPRegisterService.m in Sources */ = {isa = PBXBuildFile; fileRef = C558200083984A9CC61871C1 /* DPRegisterService.m */; };
 		C55821D692B6B4D42FBCF6B7 /* DPUserTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C55825B9370D57D6DBE4D319 /* DPUserTableCell.m */; };
+		C558220836FB5377D9F5C715 /* DPListenersController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5582233E923E1A0E47BBB28 /* DPListenersController.m */; };
 		C5582290B3EEDD84BA99B1F5 /* DPSendImageService.m in Sources */ = {isa = PBXBuildFile; fileRef = C55824A077CDCFF241104127 /* DPSendImageService.m */; };
 		C55822EAB107D2F6E8817805 /* DPFriendsListController.m in Sources */ = {isa = PBXBuildFile; fileRef = C55826DECB144A65064AE633 /* DPFriendsListController.m */; };
 		C558230D91CEC912EC43CEC8 /* DPViewControllerWithActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = C55821FD0633E32B160519C8 /* DPViewControllerWithActionSheet.m */; };
@@ -34,6 +35,8 @@
 		C55823690BBFAF0705E5B1C1 /* DPUserContentResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = C5582A95D09FFEDD1C86273D /* DPUserContentResponse.m */; };
 		C55823AEB1DA7F2D6D495E50 /* DPApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = C55827D19E715280930742B7 /* DPApplication.m */; };
 		C558248D9D7A2E7546BA7A43 /* DPFindFriendsController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5582DEB4E3E2A0D06A772C2 /* DPFindFriendsController.m */; };
+		C55825A0EF31BA4663F3F4FF /* DPCommentsController.m in Sources */ = {isa = PBXBuildFile; fileRef = C55824BD092EB00BDC17D0A6 /* DPCommentsController.m */; };
+		C55825E932D3D8856776DB3B /* DPCommentElementCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C5582B6EE1F275F9D2D25F05 /* DPCommentElementCell.m */; };
 		C55826C907810792264247DC /* DPUserInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5582A3865CDB5948245A23B /* DPUserInfoController.m */; };
 		C55827FE6819E462398AAF35 /* DPHeaderTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C558266FAB60233B34EF95B4 /* DPHeaderTableCell.m */; };
 		C55828049756BF83BBF0AC89 /* DPAbstractResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = C55825D48E2CDA925A72227C /* DPAbstractResponse.m */; };
@@ -41,13 +44,18 @@
 		C55828FCB535D2D980DF8403 /* UIImage+fixOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = C558285F3B9E445B90459C20 /* UIImage+fixOrientation.m */; };
 		C5582967082FA40EA403A732 /* DPOperationWithFriendsService.m in Sources */ = {isa = PBXBuildFile; fileRef = C55821AFA95A09EE3313F6F6 /* DPOperationWithFriendsService.m */; };
 		C55829F87747505AA1239558 /* DPConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = C5582133AD6613612238F64F /* DPConstants.m */; };
+		C5582AE53B94D207BA421CF2 /* DPAddCommentController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5582A09D5BD206EF05ED50A /* DPAddCommentController.m */; };
 		C5582B01772E3C5A661E5B45 /* DPUser.m in Sources */ = {isa = PBXBuildFile; fileRef = C55824AC5FE1BC2CA66242BC /* DPUser.m */; };
 		C5582B6BBF0EB59281A9149D /* DPUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C55826779C405D5DE8D20FA2 /* DPUserInfo.m */; };
 		C5582C4D2E6029B4FCC7A027 /* DPSearchUsersService.m in Sources */ = {isa = PBXBuildFile; fileRef = C5582634E2328FF90F4F3ADC /* DPSearchUsersService.m */; };
 		C5582C7FCE0911DD300B62ED /* default_avatar_image@2x.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = C5582094B244575CEE1902D7 /* default_avatar_image@2x.jpeg */; };
+		C5582CBD4566C0E0428940DB /* DPCommentsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = C5582712DD254F4FB905848C /* DPCommentsResponse.m */; };
 		C5582E2A593BCAB057E9C317 /* DPGetHomeContentService.m in Sources */ = {isa = PBXBuildFile; fileRef = C558286B83D602D47A4D99F1 /* DPGetHomeContentService.m */; };
+		C5582E41DC3333C9FA6E5543 /* DPComment.m in Sources */ = {isa = PBXBuildFile; fileRef = C55828EC001B154FDD4BB071 /* DPComment.m */; };
 		C5582ED47E28BA3DD6B413F3 /* DPFriendsListService.m in Sources */ = {isa = PBXBuildFile; fileRef = C55827FFBC514CECED144BD9 /* DPFriendsListService.m */; };
 		C5582ED9517F06F3501E3F37 /* DPFriendContentService.m in Sources */ = {isa = PBXBuildFile; fileRef = C55823BD71D63D4BFB259E34 /* DPFriendContentService.m */; };
+		C5582EDAD35150029A434AE8 /* DPUsersListController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5582C7C4843BDF2FB8751E5 /* DPUsersListController.m */; };
+		C5582EDB998A14E28C6F716E /* DPCommentsService.m in Sources */ = {isa = PBXBuildFile; fileRef = C55823B6F828BFB1DC428399 /* DPCommentsService.m */; };
 		C5582F275D3D950F55DB43E8 /* DPUpdateUserInfoService.m in Sources */ = {isa = PBXBuildFile; fileRef = C55823CABD1026547332DCB7 /* DPUpdateUserInfoService.m */; };
 		C5582F5C641F20AFEC242C73 /* DPSendImageResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = C55822978492F73555F3846F /* DPSendImageResponse.m */; };
 		C5582FB095AFBE0186EF1696 /* DPAbstractService.m in Sources */ = {isa = PBXBuildFile; fileRef = C55822929EF3BF34D9B07ECC /* DPAbstractService.m */; };
@@ -84,17 +92,20 @@
 		C55821AFA95A09EE3313F6F6 /* DPOperationWithFriendsService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPOperationWithFriendsService.m; sourceTree = "<group>"; };
 		C55821B215AA970A4604F618 /* DPContentElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPContentElement.m; sourceTree = "<group>"; };
 		C55821FD0633E32B160519C8 /* DPViewControllerWithActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPViewControllerWithActionSheet.m; sourceTree = "<group>"; };
+		C5582233E923E1A0E47BBB28 /* DPListenersController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPListenersController.m; sourceTree = "<group>"; };
 		C55822929EF3BF34D9B07ECC /* DPAbstractService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPAbstractService.m; sourceTree = "<group>"; };
 		C55822978492F73555F3846F /* DPSendImageResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPSendImageResponse.m; sourceTree = "<group>"; };
 		C5582321B7D9400479F821EF /* DPUsersListResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPUsersListResponse.m; sourceTree = "<group>"; };
 		C5582336220C566F790ADDA6 /* DPUserInfoResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPUserInfoResponse.h; sourceTree = "<group>"; };
 		C5582341D53E7762D17EE587 /* DPHeaderTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPHeaderTableCell.h; sourceTree = "<group>"; };
+		C55823B6F828BFB1DC428399 /* DPCommentsService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPCommentsService.m; sourceTree = "<group>"; };
 		C55823BD71D63D4BFB259E34 /* DPFriendContentService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPFriendContentService.m; sourceTree = "<group>"; };
 		C55823CABD1026547332DCB7 /* DPUpdateUserInfoService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPUpdateUserInfoService.m; sourceTree = "<group>"; };
 		C5582496C3A864B2F09C2712 /* DPSendImageResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPSendImageResponse.h; sourceTree = "<group>"; };
 		C55824A035EDA4D366EBF18A /* DPFriendContentService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPFriendContentService.h; sourceTree = "<group>"; };
 		C55824A077CDCFF241104127 /* DPSendImageService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPSendImageService.m; sourceTree = "<group>"; };
 		C55824AC5FE1BC2CA66242BC /* DPUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPUser.m; sourceTree = "<group>"; };
+		C55824BD092EB00BDC17D0A6 /* DPCommentsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPCommentsController.m; sourceTree = "<group>"; };
 		C55824F09FA94831D087A001 /* DPLoginService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPLoginService.h; sourceTree = "<group>"; };
 		C558254EA591760A41D643DB /* DPFriendsListService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPFriendsListService.h; sourceTree = "<group>"; };
 		C55825B9370D57D6DBE4D319 /* DPUserTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPUserTableCell.m; sourceTree = "<group>"; };
@@ -105,8 +116,11 @@
 		C558266FAB60233B34EF95B4 /* DPHeaderTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPHeaderTableCell.m; sourceTree = "<group>"; };
 		C55826779C405D5DE8D20FA2 /* DPUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPUserInfo.m; sourceTree = "<group>"; };
 		C55826DECB144A65064AE633 /* DPFriendsListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPFriendsListController.m; sourceTree = "<group>"; };
+		C5582712DD254F4FB905848C /* DPCommentsResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPCommentsResponse.m; sourceTree = "<group>"; };
 		C558272D2F4C8402FE6868D5 /* DPAbstractService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPAbstractService.h; sourceTree = "<group>"; };
+		C558274D63B1DD1821B0865D /* DPAddCommentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPAddCommentController.h; sourceTree = "<group>"; };
 		C55827D19E715280930742B7 /* DPApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPApplication.m; sourceTree = "<group>"; };
+		C55827F88F58836535F96389 /* DPCommentsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPCommentsController.h; sourceTree = "<group>"; };
 		C55827FFBC514CECED144BD9 /* DPFriendsListService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPFriendsListService.m; sourceTree = "<group>"; };
 		C5582802CB944F4773311DDF /* DPFindFriendsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPFindFriendsController.h; sourceTree = "<group>"; };
 		C558285F3B9E445B90459C20 /* UIImage+fixOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+fixOrientation.m"; sourceTree = "<group>"; };
@@ -115,26 +129,36 @@
 		C558289ECD0037A1FEA6105A /* DPUserInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPUserInfoController.h; sourceTree = "<group>"; };
 		C55828AA0A60DAEA2E6631DE /* DPSearchUsersService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPSearchUsersService.h; sourceTree = "<group>"; };
 		C55828AF0545673C32043124 /* DPAbstractResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPAbstractResponse.h; sourceTree = "<group>"; };
+		C55828C9D864A67017D43E7D /* DPComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPComment.h; sourceTree = "<group>"; };
 		C55828DF19ABCE8AAFB0F5FF /* DPUIUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPUIUtils.h; sourceTree = "<group>"; };
+		C55828EC001B154FDD4BB071 /* DPComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPComment.m; sourceTree = "<group>"; };
 		C558290CB3AA00FF63A127FA /* DPRibbonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRibbonViewController.h; sourceTree = "<group>"; };
 		C558296F6C02E832D957F1F4 /* DPRibbonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRibbonViewController.m; sourceTree = "<group>"; };
 		C558298D514D1286A1365AF9 /* DPUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPUserInfo.h; sourceTree = "<group>"; };
 		C55829C0E0B7DE623CD76650 /* TTImageViewWithDefaultAvatar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTImageViewWithDefaultAvatar.h; sourceTree = "<group>"; };
+		C55829C193EBBFED451CCFD6 /* DPCommentElementCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPCommentElementCell.h; sourceTree = "<group>"; };
+		C5582A09D5BD206EF05ED50A /* DPAddCommentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPAddCommentController.m; sourceTree = "<group>"; };
 		C5582A3865CDB5948245A23B /* DPUserInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPUserInfoController.m; sourceTree = "<group>"; };
 		C5582A3CCD455F0FFB09990A /* DPUIUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPUIUtils.m; sourceTree = "<group>"; };
+		C5582A3E56A304A633037117 /* DPListenersController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPListenersController.h; sourceTree = "<group>"; };
 		C5582A40B4B26AF89C7461F5 /* DPGetHomeContentService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPGetHomeContentService.h; sourceTree = "<group>"; };
 		C5582A95698868523366015A /* DPUserContentResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPUserContentResponse.h; sourceTree = "<group>"; };
 		C5582A95D09FFEDD1C86273D /* DPUserContentResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPUserContentResponse.m; sourceTree = "<group>"; };
 		C5582AA17D51C131B6F3447F /* DPViewControllerWithActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPViewControllerWithActionSheet.h; sourceTree = "<group>"; };
 		C5582ADDC17C124CCC17619E /* DPFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPFriendViewController.m; sourceTree = "<group>"; };
 		C5582B65F57F666E6F845923 /* UIImage+fixOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+fixOrientation.h"; sourceTree = "<group>"; };
+		C5582B6EE1F275F9D2D25F05 /* DPCommentElementCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPCommentElementCell.m; sourceTree = "<group>"; };
 		C5582B981F47708A9B5ADA43 /* DPUsersListResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPUsersListResponse.h; sourceTree = "<group>"; };
 		C5582C23CEE43CE0FF026A82 /* DPUserInfoResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPUserInfoResponse.m; sourceTree = "<group>"; };
+		C5582C7C4843BDF2FB8751E5 /* DPUsersListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPUsersListController.m; sourceTree = "<group>"; };
 		C5582CF5D3E60330887F2409 /* DPContentElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPContentElement.h; sourceTree = "<group>"; };
 		C5582D04A3C78A95B0A246C9 /* DPSendImageService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPSendImageService.h; sourceTree = "<group>"; };
 		C5582DA15C3E50EFBE292B60 /* DPUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPUser.h; sourceTree = "<group>"; };
 		C5582DAAF2FE856FCF80EABF /* DPRegisterService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRegisterService.h; sourceTree = "<group>"; };
 		C5582DEB4E3E2A0D06A772C2 /* DPFindFriendsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPFindFriendsController.m; sourceTree = "<group>"; };
+		C5582E2025E02F805DC66F3A /* DPCommentsService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPCommentsService.h; sourceTree = "<group>"; };
+		C5582F4649B478718A2A062A /* DPCommentsResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPCommentsResponse.h; sourceTree = "<group>"; };
+		C5582FAE9682FBFA0129736C /* DPUsersListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPUsersListController.h; sourceTree = "<group>"; };
 		C5582FEB88B4AA341E75F230 /* DPOperationWithFriendsService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPOperationWithFriendsService.h; sourceTree = "<group>"; };
 		E4FD452BDBDE47F68CEC64C0 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		F605C9DFA37A47DBA0EABE49 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -233,6 +257,14 @@
 				C55821641080AB42F9BA41FD /* DPFriendsListController.h */,
 				C5582DEB4E3E2A0D06A772C2 /* DPFindFriendsController.m */,
 				C5582802CB944F4773311DDF /* DPFindFriendsController.h */,
+				C55824BD092EB00BDC17D0A6 /* DPCommentsController.m */,
+				C55827F88F58836535F96389 /* DPCommentsController.h */,
+				C5582A09D5BD206EF05ED50A /* DPAddCommentController.m */,
+				C558274D63B1DD1821B0865D /* DPAddCommentController.h */,
+				C5582233E923E1A0E47BBB28 /* DPListenersController.m */,
+				C5582A3E56A304A633037117 /* DPListenersController.h */,
+				C5582C7C4843BDF2FB8751E5 /* DPUsersListController.m */,
+				C5582FAE9682FBFA0129736C /* DPUsersListController.h */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -268,6 +300,8 @@
 				C55828AA0A60DAEA2E6631DE /* DPSearchUsersService.h */,
 				C55821AFA95A09EE3313F6F6 /* DPOperationWithFriendsService.m */,
 				C5582FEB88B4AA341E75F230 /* DPOperationWithFriendsService.h */,
+				C55823B6F828BFB1DC428399 /* DPCommentsService.m */,
+				C5582E2025E02F805DC66F3A /* DPCommentsService.h */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -285,6 +319,8 @@
 				C558200E212ED98A2A174824 /* DPUserTableCell.h */,
 				C5582873C7149EF9643848D4 /* TTImageViewWithDefaultAvatar.m */,
 				C55829C0E0B7DE623CD76650 /* TTImageViewWithDefaultAvatar.h */,
+				C5582B6EE1F275F9D2D25F05 /* DPCommentElementCell.m */,
+				C55829C193EBBFED451CCFD6 /* DPCommentElementCell.h */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -317,6 +353,8 @@
 				C5582A95698868523366015A /* DPUserContentResponse.h */,
 				C5582321B7D9400479F821EF /* DPUsersListResponse.m */,
 				C5582B981F47708A9B5ADA43 /* DPUsersListResponse.h */,
+				C5582712DD254F4FB905848C /* DPCommentsResponse.m */,
+				C5582F4649B478718A2A062A /* DPCommentsResponse.h */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -328,6 +366,8 @@
 				C5582DA15C3E50EFBE292B60 /* DPUser.h */,
 				C5582CF5D3E60330887F2409 /* DPContentElement.h */,
 				C55821B215AA970A4604F618 /* DPContentElement.m */,
+				C55828EC001B154FDD4BB071 /* DPComment.m */,
+				C55828C9D864A67017D43E7D /* DPComment.h */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -453,6 +493,14 @@
 				C558248D9D7A2E7546BA7A43 /* DPFindFriendsController.m in Sources */,
 				C5582C4D2E6029B4FCC7A027 /* DPSearchUsersService.m in Sources */,
 				C5582967082FA40EA403A732 /* DPOperationWithFriendsService.m in Sources */,
+				C5582E41DC3333C9FA6E5543 /* DPComment.m in Sources */,
+				C55825E932D3D8856776DB3B /* DPCommentElementCell.m in Sources */,
+				C55825A0EF31BA4663F3F4FF /* DPCommentsController.m in Sources */,
+				C5582CBD4566C0E0428940DB /* DPCommentsResponse.m in Sources */,
+				C5582EDB998A14E28C6F716E /* DPCommentsService.m in Sources */,
+				C5582AE53B94D207BA421CF2 /* DPAddCommentController.m in Sources */,
+				C558220836FB5377D9F5C715 /* DPListenersController.m in Sources */,
+				C5582EDAD35150029A434AE8 /* DPUsersListController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,11 +6,10 @@
 
 
 #import <Foundation/Foundation.h>
-
-static NSString *const kFriendCellID = @"friendTableCellID";
+#import "DPUsersListController.h"
 
 @class DPFriendsListService;
 @class DPOperationWithFriendsService;
 
-@interface DPFriendsListController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface DPFriendsListController : DPUsersListController <UITableViewDataSource, UITableViewDelegate>
 @end

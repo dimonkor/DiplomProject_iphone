@@ -20,6 +20,7 @@
                                                              bundle: nil];
     if ([[DPApplication instance] isLogin]){
         rootViewController = [mainStoryboard instantiateViewControllerWithIdentifier:mainTabBarControllerID];
+        ((UITabBarController *)rootViewController).selectedIndex = 1;
     }  else{
         rootViewController = [mainStoryboard instantiateViewControllerWithIdentifier:loginControllerID];
     }

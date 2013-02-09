@@ -6,9 +6,10 @@
 
 
 #import "DPViewControllerWithActionSheet.h"
+#import "DPUIUtils.h"
 
-#define CAMERA_TITLE @"Camera"
-#define LIBRARY_TITLE @"Library"
+#define CAMERA_TITLE @"Камера"
+#define LIBRARY_TITLE @"Библиотека изображений"
 
 @interface DPViewControllerWithActionSheet ()
 
@@ -24,15 +25,15 @@
     BOOL library = [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary];
     UIActionSheet *actionSheet = nil;
     if (library && camera) {
-        actionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:CAMERA_TITLE, LIBRARY_TITLE, nil];
+        actionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Отмена" destructiveButtonTitle:nil otherButtonTitles:CAMERA_TITLE, LIBRARY_TITLE, nil];
     } else if (library) {
-        actionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:LIBRARY_TITLE, nil];
+        actionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Отмена" destructiveButtonTitle:nil otherButtonTitles:LIBRARY_TITLE, nil];
     } else if (camera) {
-        actionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:CAMERA_TITLE, nil];
+        actionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Отмена" destructiveButtonTitle:nil otherButtonTitles:CAMERA_TITLE, nil];
     } else {
-        actionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:nil];
+        actionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Отмена" destructiveButtonTitle:nil otherButtonTitles:nil];
     }
-    [actionSheet showFromRect:CGRectZero inView:self.view animated:YES];
+    [actionSheet showFromRect:CGRectZero inView:[DPUIUtils appWindow] animated:YES];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {

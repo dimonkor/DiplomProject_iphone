@@ -99,11 +99,6 @@
     self.searchDisplayController.searchResultsTableView.rowHeight = 70;
 }
 
-- (void)searchDisplayControllerDidBeginSearch:(UISearchDisplayController *)controller {
-    NSLog(@"dfsdf");
-}
-
-
 - (void)viewDidUnload {
     [super viewDidUnload];
 }
